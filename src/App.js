@@ -1,21 +1,50 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Container, Row, Col } from 'reactstrap';
+import Login from './screens/auth/Login';
+import Home from './screens/student/Home';
+import Header from './components/layout/Header';
 
-class App extends Component {
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoggedIn: false
+    };
+
+    this.doLogin = this.doLogin.bind(this);
+    this.doLogoff = this.doLogoff.bind(this);
+  }
+
+  doLogin() {
+    this.setState({
+      isLoggedIn: true
+    });
+  }
+
+  doLogoff() {
+    this.setState({
+      isLoggedIn: false
+    });
+  }
+
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+    if(this.state.isLoggedIn) {
+      return (
+        <div>
+          <Header doLogoff={this.doLogoff}/>
+          <Container className="content">
+            <Row>
+              <Col>
+                <Home/>
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      );
+    } else {
+      return (
+        <Login doLogin={this.doLogin}/>
+      );
+    }
   }
 }
-
-export default App;
