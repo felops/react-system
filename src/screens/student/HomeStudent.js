@@ -33,7 +33,7 @@ const listExams = exams.map((exam) =>
     <ExamCard exam={exam}/>
   );
 
-export default class Home extends Component {
+export default class HomeStudent extends Component {
   render() {
     return (
       <Card>

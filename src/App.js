@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
+
 import Login from './screens/auth/Login';
-import Home from './screens/student/Home';
+import HomeStudent from './screens/student/HomeStudent';
+import HomeProfessor from './screens/professor/HomeProfessor';
 import Header from './components/layout/Header';
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoggedIn: false
+      isLoggedIn: true
     };
 
     this.doLogin = this.doLogin.bind(this);
@@ -35,7 +37,7 @@ export default class App extends Component {
           <Container className="content">
             <Row>
               <Col>
-                <Home/>
+                <HomeProfessor/>
               </Col>
             </Row>
           </Container>
