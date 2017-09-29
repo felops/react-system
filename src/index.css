@@ -10,3 +10,7 @@ section {
 div.card-margin {
   margin-top: 1.25rem;
 }
+
+div.splitted-in-2 {
+  column-count: 2;
+}
