@@ -29,8 +29,8 @@ const exams = [
   }
 ];
 
-const listExams = exams.map((exam) =>
-  <ExamProfessorCard exam={exam}/>
+const listExams = exams.map((exam, i) =>
+  <ExamProfessorCard key={i} exam={exam}/>
 );
 
 export default class HomeProfessor extends Component {
