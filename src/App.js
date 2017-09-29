@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'reactstrap';
 
+import Content from './components/layout/Content';
 import Login from './screens/auth/Login';
 import HomeStudent from './screens/student/HomeStudent';
 import HomeProfessor from './screens/professor/HomeProfessor';
-import Header from './components/layout/Header';
 
 export default class App extends Component {
   constructor(props) {
@@ -12,9 +11,6 @@ export default class App extends Component {
     this.state = {
       isLoggedIn: true
     };
-
-    this.doLogin = this.doLogin.bind(this);
-    this.doLogoff = this.doLogoff.bind(this);
   }
 
   doLogin() {
@@ -32,20 +28,13 @@ export default class App extends Component {
   render() {
     if(this.state.isLoggedIn) {
       return (
-        <div>
-          <Header doLogoff={this.doLogoff}/>
-          <Container className="content">
-            <Row>
-              <Col>
-                <HomeProfessor/>
-              </Col>
-            </Row>
-          </Container>
-        </div>
+        <Content doLogoff={this.doLogoff.bind(this)}>
+          <HomeProfessor/>
+        </Content>
       );
     } else {
       return (
-        <Login doLogin={this.doLogin}/>
+        <Login doLogin={this.doLogin.bind(this)}/>
       );
     }
   }
