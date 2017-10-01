@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ExamProfessorCard from './../../components/ExamProfessorCard';
-import { Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 const exams = [
   {
@@ -39,8 +39,7 @@ export default class HomeProfessor extends Component {
       <div>
         <h3>Avaliações em andamento</h3>
         <p>Não há avaliações em andamento no momento.</p>
-        <Button color="primary">Criar Avaliação</Button>
-
+        <Link to="/createExam">Criar Avaliação</Link>
         <section>
           <h3>Avaliações anteriores</h3>
           {listExams}

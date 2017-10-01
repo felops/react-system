@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 
-import Content from './components/layout/Content';
 import Login from './screens/auth/Login';
-import HomeStudent from './screens/student/HomeStudent';
-import HomeProfessor from './screens/professor/HomeProfessor';
+import Router from './config/Routes';
 
 export default class App extends Component {
   constructor(props) {
@@ -28,9 +26,7 @@ export default class App extends Component {
   render() {
     if(this.state.isLoggedIn) {
       return (
-        <Content doLogoff={this.doLogoff.bind(this)}>
-          <HomeProfessor/>
-        </Content>
+        <Router doLogoff={this.doLogoff.bind(this)}/>
       );
     } else {
       return (
