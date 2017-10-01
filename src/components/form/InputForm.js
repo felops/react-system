@@ -3,7 +3,7 @@ import { FormGroup, Label, Input } from 'reactstrap';
 
 export default class InputGroup extends Component {
   render() {
-    if(this.props.type == 'select') {
+    if(this.props.type === 'select') {
       const options = this.props.options.map((option, i) =>
         <option key={option.id}>{option.name}</option>
       );

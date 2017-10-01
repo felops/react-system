@@ -1,41 +1,9 @@
 import React, { Component } from 'react';
-import InputForm from './../../components/InputForm';
-import { Button, Card, CardBlock, CardTitle, Container, Form, Row, Col } from 'reactstrap';
-
-const inputs = [
-  {
-    type: 'email',
-    name: 'email',
-    id: 'email',
-    label: 'E-mail'
-  },
-  {
-    type: 'password',
-    name: 'password',
-    id: 'password',
-    label: 'Senha'
-  }
-];
+import LoginForm from './../../components/form/LoginForm';
+import { Button, Card, CardBlock, CardTitle, Container, Row, Col } from 'reactstrap';
 
 export default class Login extends Component {
-  componentDidMount() {
-    this.setState({
-      email: '',
-      password: ''
-    });
-  }
-
-  handleChange(e) {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  }
-
   render() {
-    const inputForm = inputs.map((input, i) =>
-      <InputForm {...input} key={i} onChange={this.handleChange.bind(this)}/>
-    );
-
     return (
       <Container className="content">
         <Row>
@@ -43,16 +11,13 @@ export default class Login extends Component {
             <Card>
               <CardBlock>
                 <CardTitle>Login</CardTitle>
-                <Form>
-                  {inputForm}
-                  <Button onClick={this.props.doLogin}>Submit</Button>
-                </Form>
+                <LoginForm/>
+                <Button onClick={this.props.doLogin}>Submit</Button>
               </CardBlock>
             </Card>
           </Col>
         </Row>
       </Container>
-
     );
   }
 }
