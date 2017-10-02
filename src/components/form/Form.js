@@ -4,7 +4,6 @@ import InputForm from './InputForm';
 export default class Form extends Component {
   componentDidMount() {
     let state = {};
-    console.log(this.props.inputs);
     this.props.inputs.map(function(input) {
       state[input.name] = '';
     });

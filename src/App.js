@@ -7,6 +7,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isProfessor: true,
       isLoggedIn: true
     };
   }
@@ -26,7 +27,7 @@ export default class App extends Component {
   render() {
     if(this.state.isLoggedIn) {
       return (
-        <Router doLogoff={this.doLogoff.bind(this)}/>
+        <Router doLogoff={this.doLogoff.bind(this)} isProfessor={this.state.isProfessor}/>
       );
     } else {
       return (

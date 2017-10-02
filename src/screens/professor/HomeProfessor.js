@@ -39,7 +39,7 @@ export default class HomeProfessor extends Component {
       <div>
         <h3>Avaliações em andamento</h3>
         <p>Não há avaliações em andamento no momento.</p>
-        <Link to="/createExam">Criar Avaliação</Link>
+        <Link to="/avaliacao">Criar Avaliação</Link>
         <section>
           <h3>Avaliações anteriores</h3>
           {listExams}

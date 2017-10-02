@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ExamStudentCard from './../../components/ExamStudentCard';
+import { Link } from 'react-router-dom';
 
 const exams = [
   {
@@ -37,7 +38,7 @@ export default class HomeStudent extends Component {
     return (
         <div>
           <h3>Avaliações diponíveis</h3>
-          <p>Não há avaliações disponíveis no momento.</p>
+          Existe uma avaliação disponível. <Link to="/avaliacao">Cliqui aqui começar!</Link>
 
           <section>
             <h3>Avaliações diponíveis</h3>

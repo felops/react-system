@@ -16,6 +16,14 @@ export default class InputGroup extends Component {
           </Input>
         </FormGroup>
       );
+    } else if(this.props.type === 'radio') {
+      return (
+        <FormGroup check>
+          <Label check>
+            <Input type="radio" name={this.props.name}/>{' ' + this.props.description}
+          </Label>
+        </FormGroup>
+      );
     } else {
       return (
         <FormGroup>

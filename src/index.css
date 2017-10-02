@@ -1,8 +1,16 @@
 div.container.content {
-  margin-bottom: 30px;
-  margin-top: 30px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+div.card-margin {
+  margin-top: 1.25rem;
 }
 
 section {
-  margin-top: 50px;
+  margin-top: 30px;
+}
+
+.helper-margin-top {
+  margin-top: 1.25rem;
 }

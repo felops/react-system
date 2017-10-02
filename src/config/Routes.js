@@ -1,11 +1,51 @@
 import React from 'react';
 import Content from './../components/layout/Content';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import { Container, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { Container, Collapse, Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap';
 
-//import HomeStudent from './../screens/student/HomeStudent';
 import CreateExam from './../screens/professor/CreateExam';
 import HomeProfessor from './../screens/professor/HomeProfessor';
+
+import HomeStudent from './../screens/student/HomeStudent';
+import DoExam from './../screens/student/DoExam';
+
+const professor = ({
+  links: (
+    <Nav className="ml-auto" navbar>
+      <NavItem>
+        <Link className="nav-link" to="/">Home</Link>
+      </NavItem>
+      <NavItem>
+        <Link className="nav-link" to="/avaliacao">Criar Avaliação</Link>
+      </NavItem>
+    </Nav>
+  ),
+  routes: (
+    <Content>
+      <Route exact path="/" component={HomeProfessor} />
+      <Route path="/avaliacao" component={CreateExam} />
+    </Content>
+  ),
+});
+
+const student = ({
+  links: (
+    <Nav className="ml-auto" navbar>
+      <NavItem>
+        <Link className="nav-link" to="/">Home</Link>
+      </NavItem>
+      <NavItem>
+        <Link className="nav-link" to="/avaliacao">Avaliação</Link>
+      </NavItem>
+    </Nav>
+  ),
+  routes: (
+    <Content>
+      <Route exact path="/" component={HomeStudent} />
+      <Route path="/avaliacao" component={DoExam} />
+    </Content>
+  ),
+});
 
 export default class Routes extends React.Component {
   constructor(props) {
@@ -15,6 +55,14 @@ export default class Routes extends React.Component {
     this.state = {
       isOpen: false
     };
+  }
+
+  componentWillMount() {
+    if (this.props.isProfessor) {
+      this.rounting = professor;
+    } else {
+      this.rounting = student;
+    }
   }
 
   toggle() {
@@ -31,23 +79,12 @@ export default class Routes extends React.Component {
             <Container>
               <NavbarBrand href="/">ARANDU</NavbarBrand>
               <Collapse navbar>
-                <Nav className="ml-auto" navbar>
-                  <NavItem>
-                    <Link className="nav-link" to="/">Home</Link>
-                  </NavItem>
-                  <NavItem>
-                    <Link className="nav-link" to="/createExam">Criar Avaliação</Link>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink href="#" onClick={this.props.doLogoff}>Sair</NavLink>
-                  </NavItem>
-                </Nav>
+                {this.rounting.links}
               </Collapse>
             </Container>
           </Navbar>
           <Content>
-            <Route exact path="/" component={HomeProfessor} />
-            <Route path="/createExam" component={CreateExam} />
+            {this.rounting.routes}
           </Content>
         </div>
       </Router>
