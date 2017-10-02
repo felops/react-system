@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Card, CardBlock, CardTitle, Col, Row } from 'reactstrap';
 import Form from './form/Form';
 
-export default class ExamQuestions extends Component {
+export default class ExamQuestion extends Component {
   render() {
     return (
       <Card className="card-margin">
