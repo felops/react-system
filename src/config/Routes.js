@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { Container, Collapse, Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap';
 
 import CreateExam from './../screens/professor/CreateExam';
+import ExameAvalytics from './../screens/professor/ExameAvalytics';
 import HomeProfessor from './../screens/professor/HomeProfessor';
 
 import HomeStudent from './../screens/student/HomeStudent';
@@ -24,6 +25,7 @@ const professor = ({
     <Content>
       <Route exact path="/" component={HomeProfessor} />
       <Route path="/avaliacao" component={CreateExam} />
+      <Route path="/estatiscas/:id" component={ExameAvalytics} />
     </Content>
   ),
 });

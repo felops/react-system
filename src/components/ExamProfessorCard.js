@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ProgressBar from './ProgressBar';
-import { Button, Card, CardBlock, CardTitle, CardSubtitle, Col, Row } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import { Card, CardBlock, CardTitle, CardSubtitle, Col, Row } from 'reactstrap';
 
 export default class ExamProfessorCard extends Component {
   calcPercentage(value, total) {
@@ -20,7 +21,7 @@ export default class ExamProfessorCard extends Component {
               </p>
             </Col>
             <Col>
-              <Button outline color="primary" className="float-right">Estatísticas</Button>
+              <Link to={'/estatiscas/' + this.props.exam.id} params={{id: 2}} className="float-right">Estatísticas</Link>
             </Col>
           </Row>
           <div>
