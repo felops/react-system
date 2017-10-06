@@ -3,14 +3,19 @@ import { FormGroup, Label, Input } from 'reactstrap';
 
 export default class InputGroup extends Component {
   render() {
+    let label;
+    if(this.props.label) {
+      label = <Label for={this.props.id}>{this.props.label}</Label>;
+    }
+
     if(this.props.type === 'select') {
       const options = this.props.options.map((option, i) =>
-        <option key={option.id}>{option.name}</option>
+        <option key={option.id} value={option.id}>{option.name}</option>
       );
 
       return (
         <FormGroup>
-          <Label for={this.props.id}>{this.props.label}</Label>
+          {label}
           <Input type='select' name={this.props.name} id={this.props.id} onChange={this.props.onChange}>
             {options}
           </Input>
@@ -27,8 +32,8 @@ export default class InputGroup extends Component {
     } else {
       return (
         <FormGroup>
-          <Label for={this.props.id}>{this.props.label}</Label>
-          <Input type={this.props.type} name={this.props.name} id={this.props.id} onChange={this.props.onChange}/>
+          {label}
+          <Input type={this.props.type} name={this.props.name} id={this.props.id} value={this.props.value} onChange={this.props.onChange}/>
         </FormGroup>
       );
     }
