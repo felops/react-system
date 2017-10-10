@@ -9,6 +9,8 @@ export default class Exam extends Component {
       question.options.map((option) => {
         option.type = 'radio';
         option.name = 'question' + question.id;
+        option.value = option.id;
+        option.description = option.option;
       });
 
       return (<ExamQuestion key={question.id} {...question} title={'Questão ' + (i + 1)}/>);
@@ -17,8 +19,8 @@ export default class Exam extends Component {
 
   componentWillMount() {
     this.setState({questions: null });
-    axios.get('http://localhost:3000/api/questions')
-      .then((response) => this.setState({
+    axios.get('http://localhost:3000/api/loadExam').then((response) =>
+      this.setState({
         questions: this.createQuestionComponents(response.data)
       })
     );
