@@ -6,7 +6,7 @@ export default class Form extends Component {
   componentDidMount() {
     let state = {};
     this.props.inputs.map(function(input) {
-      state[input.name] = input.value;
+      return state[input.name] = input.value;
     });
 
     this.setState(state);
