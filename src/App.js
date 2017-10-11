@@ -7,13 +7,14 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isProfessor: true,
-      isLoggedIn: true
+      isProfessor: false,
+      isLoggedIn: false
     };
   }
 
-  doLogin() {
+  doLogin(e, state) {
     this.setState({
+      isProfessor: state.type===2,
       isLoggedIn: true
     });
   }

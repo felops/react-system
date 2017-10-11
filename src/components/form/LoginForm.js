@@ -3,6 +3,16 @@ import Form from './Form';
 
 const inputs = [
   {
+    type: 'select',
+    name: 'type',
+    id: 'type',
+    label: 'Usuário',
+    options: [
+      {id: 1, name: 'Estudante'},
+      {id: 2, name: 'Professor'}
+    ]
+  },
+  {
     type: 'email',
     name: 'email',
     id: 'email',
@@ -20,7 +30,7 @@ export default class ExamForm extends Component {
   render() {
     return (
       <div>
-        <Form inputs={inputs}/>
+        <Form inputs={inputs} button={this.props.button}/>
       </div>
     );
   }
