@@ -7,7 +7,7 @@ export default class DoExam extends Component {
     return (
       <div>
         <h3>Avaliação</h3>
-        <Exam/>
+        <Exam exam={this.props.match.params.id}/>
         <Button color="primary" className="helper-margin-top float-right">Enviar</Button>
       </div>
     );

@@ -44,7 +44,7 @@ const student = ({
   routes: (
     <Content>
       <Route exact path="/" component={HomeStudent} />
-      <Route path="/avaliacao" component={DoExam} />
+      <Route path="/avaliacao/:id" component={DoExam} />
     </Content>
   ),
 });

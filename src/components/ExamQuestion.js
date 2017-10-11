@@ -11,9 +11,9 @@ export default class ExamQuestion extends Component {
           <Col>
               <CardTitle>{this.props.title}</CardTitle>
               <p className="text-muted">
-                {this.props.question}
+                {this.props.Question.question}
               </p>
-              <Form inputs={this.props.options}/>
+              <Form inputs={this.props.Question.QuestionOptions}/>
             </Col>
           </Row>
         </CardBlock>

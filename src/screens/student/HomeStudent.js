@@ -29,8 +29,8 @@ const exams = [
   }
 ];
 
-const listExams = exams.map((exam) =>
-  <ExamStudentCard exam={exam}/>
+const listExams = exams.map((exam, i) =>
+  <ExamStudentCard key={i} exam={exam}/>
 );
 
 export default class HomeStudent extends Component {
@@ -38,8 +38,7 @@ export default class HomeStudent extends Component {
     return (
         <div>
           <h3>Avaliações diponíveis</h3>
-          Existe uma avaliação disponível. <Link to="/avaliacao">Cliqui aqui começar!</Link>
-
+          Existe uma avaliação disponível. <Link to={'/avaliacao/' + 1}>Cliqui aqui começar!</Link>
           <section>
             <h3>Avaliações diponíveis</h3>
             {listExams}

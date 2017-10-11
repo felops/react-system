@@ -8,7 +8,7 @@ export default class CreateExam extends Component {
         <h3>Estatístcas</h3>
         <p>Dos 42 alunos, 38 atngiram notas maiores que 6,00.</p>
         <p>A maior dificuldade encontrada foi em Trigonometria.</p>
-        <Exam/>
+        <Exam exam={this.props.match.params.id}/>
       </div>
     );
   }

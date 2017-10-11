@@ -21,7 +21,7 @@ export default class ExamProfessorCard extends Component {
               </p>
             </Col>
             <Col>
-              <Link to={'/estatiscas/' + this.props.exam.id} params={{id: 2}} className="float-right">Estatísticas</Link>
+              <Link to={'/estatiscas/' + this.props.exam.id} className="float-right">Estatísticas</Link>
             </Col>
           </Row>
           <div>
