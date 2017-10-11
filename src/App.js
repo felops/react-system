@@ -14,7 +14,7 @@ export default class App extends Component {
 
   doLogin(e, state) {
     this.setState({
-      isProfessor: state.type===2,
+      isProfessor: parseInt(state.type)===2,
       isLoggedIn: true
     });
   }
