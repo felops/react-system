@@ -12,7 +12,7 @@ import DoExam from './../screens/student/DoExam';
 
 const professor = ({
   links: (
-    <Nav className="ml-auto" navbar>
+    <Nav navbar>
       <NavItem>
         <Link className="nav-link" to="/">Home</Link>
       </NavItem>
@@ -32,12 +32,9 @@ const professor = ({
 
 const student = ({
   links: (
-    <Nav className="ml-auto" navbar>
+    <Nav navbar>
       <NavItem>
         <Link className="nav-link" to="/">Home</Link>
-      </NavItem>
-      <NavItem>
-        <Link className="nav-link" to="/avaliacao">Avaliação</Link>
       </NavItem>
     </Nav>
   ),
@@ -82,6 +79,11 @@ export default class Routes extends React.Component {
               <NavbarBrand href="/">ARANDU</NavbarBrand>
               <Collapse navbar>
                 {this.rounting.links}
+                <Nav navbar>
+                  <NavItem>
+                    <Link className="nav-link" to="/" onClick={this.props.doLogoff}>Logout</Link>
+                  </NavItem>
+                </Nav>
               </Collapse>
             </Container>
           </Navbar>
