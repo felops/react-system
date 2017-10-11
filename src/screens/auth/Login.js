@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import LoginForm from './../../components/form/LoginForm';
-import { Card, CardBlock, CardTitle, Container, Row, Col } from 'reactstrap';
+import { Card, CardHeader, CardBlock, Container, Row, Col } from 'reactstrap';
 
 export default class Login extends Component {
   render() {
@@ -14,8 +14,8 @@ export default class Login extends Component {
         <Row>
           <Col>
             <Card>
+              <CardHeader tag="h3">Login</CardHeader>
               <CardBlock>
-                <CardTitle>Login</CardTitle>
                 <LoginForm button={button}/>
               </CardBlock>
             </Card>
