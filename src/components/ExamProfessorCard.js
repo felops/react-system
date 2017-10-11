@@ -15,7 +15,7 @@ export default class ExamProfessorCard extends Component {
         <Row>
           <Col>
               <CardTitle>{this.props.exam.title}</CardTitle>
-              <CardSubtitle>Realizada  em {this.props.exam.date}</CardSubtitle>
+              <CardSubtitle>Realizada em {this.props.exam.createdAt}</CardSubtitle>
               <p className="text-muted">
                 Dos {this.props.exam.total} alunos, {this.props.exam.wellPerformed} atngiram notas maiores que 6,00.
               </p>

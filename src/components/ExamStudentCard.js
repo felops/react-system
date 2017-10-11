@@ -12,7 +12,7 @@ export default class ExamStudentCard extends Component {
       <Card className="card-margin">
         <CardBlock>
           <CardTitle>{this.props.exam.title}</CardTitle>
-          <CardSubtitle>Realizada  em {this.props.exam.date}</CardSubtitle>
+          <CardSubtitle>Realizada em {this.props.exam.createdAt}</CardSubtitle>
           <p className="text-muted">
             Você acertou {this.props.exam.right} de um total de {this.props.exam.total} questões
           </p>

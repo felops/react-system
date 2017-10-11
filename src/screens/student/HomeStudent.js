@@ -1,47 +1,40 @@
 import React, { Component } from 'react';
 import ExamStudentCard from './../../components/ExamStudentCard';
 import { Link } from 'react-router-dom';
-
-const exams = [
-  {
-    title: 'Avaliação 4',
-    right: 15,
-    total: 16,
-    date: '18/09/2017'
-  },
-  {
-    title: 'Avaliação 3',
-    right: 8,
-    total: 16,
-    date: '26/08/2017'
-  },
-  {
-    title: 'Avaliação 2',
-    right: 10,
-    total: 16,
-    date: '05/04/2017'
-  },
-  {
-    title: 'Avaliação 1',
-    right: 4,
-    total: 16,
-    date: '20/11/2016'
-  }
-];
-
-const listExams = exams.map((exam, i) =>
-  <ExamStudentCard key={i} exam={exam}/>
-);
+import axios from 'axios';
 
 export default class HomeStudent extends Component {
+  createList(exams) {
+    return exams.map((exam, i) =>
+      <ExamStudentCard key={i} exam={exam}/>
+    );
+  }
+
+  componentWillMount() {
+    this.setState({exams: 'carregando..'});
+
+    axios.get('http://localhost:3000/api/exams').then((response) => {
+      response.data.map(exam => {
+        exam.total = 42;
+        exam.right = 25;
+
+        return exam;
+      });
+
+      this.setState({
+         exams: this.createList(response.data)
+      });
+    });
+  }
+
   render() {
     return (
         <div>
           <h3>Avaliações diponíveis</h3>
-          Existe uma avaliação disponível. <Link to={'/avaliacao/' + 1}>Cliqui aqui começar!</Link>
+          Existe uma avaliação em andamento. <Link to={'/avaliacao/' + 1}>Cliqui aqui começar!</Link>
           <section>
             <h3>Avaliações diponíveis</h3>
-            {listExams}
+            {this.state.exams}
           </section>
         </div>
     );
