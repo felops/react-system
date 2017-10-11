@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import LoginForm from './../../components/form/LoginForm';
-import { Button, Card, CardBlock, CardTitle, Container, Row, Col } from 'reactstrap';
+import { Card, CardBlock, CardTitle, Container, Row, Col } from 'reactstrap';
 
 export default class Login extends Component {
   render() {
+    let button = {
+      onClick: this.props.doLogin,
+      text: 'Entrar'
+    };
+
     return (
       <Container className="content">
         <Row>
@@ -11,8 +16,7 @@ export default class Login extends Component {
             <Card>
               <CardBlock>
                 <CardTitle>Login</CardTitle>
-                <LoginForm/>
-                <Button onClick={this.props.doLogin}>Submit</Button>
+                <LoginForm button={button}/>
               </CardBlock>
             </Card>
           </Col>

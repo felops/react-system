@@ -24,7 +24,7 @@ export default class Form extends Component {
   }
 
   onClick(e) {
-    this.props.onClick(e, this.state);
+    this.props.button.onClick(e, this.state);
   }
 
   render() {
@@ -37,8 +37,8 @@ export default class Form extends Component {
       );
     }
 
-    if(this.props.onClick) {
-      button = <Button color="primary" onClick={this.onClick}>Criar</Button>;
+    if(this.props.button) {
+      button = <Button color="primary" onClick={this.onClick}>{this.props.button.text}</Button>;
     }
 
     return (

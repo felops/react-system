@@ -10,6 +10,12 @@ const inputs = [
     value: 1
   },
   {
+    type: 'text',
+    name: 'title',
+    id: 'title',
+    label: 'Título'
+  },
+  {
     type: 'select',
     name: 'class',
     id: 'class',
@@ -92,9 +98,14 @@ export default class ExamForm extends Component {
   }
 
   render() {
+    let button = {
+      onClick: this.onClick,
+      text: 'Cadastrar'
+    };
+
     return (
       <div>
-        <Form inputs={inputs} onClick={this.onClick}/>
+        <Form inputs={inputs} button={button}/>
       </div>
     );
   }
