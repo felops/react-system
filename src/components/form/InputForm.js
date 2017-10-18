@@ -25,7 +25,8 @@ export default class InputGroup extends Component {
       return (
         <FormGroup check>
           <Label check>
-            <Input type="radio" name={this.props.name}/>{' ' + this.props.description}
+            <Input type="radio" name={this.props.name} value={this.props.value} onChange={this.props.onChange}/>
+            {' ' + this.props.description}
           </Label>
         </FormGroup>
       );

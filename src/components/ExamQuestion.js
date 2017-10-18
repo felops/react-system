@@ -13,7 +13,7 @@ export default class ExamQuestion extends Component {
               <p className="text-muted">
                 {this.props.Question.question}
               </p>
-              <Form inputs={this.props.Question.QuestionOptions}/>
+              <Form inputs={this.props.Question.QuestionOptions} handleChange={this.props.handleChange}/>
             </Col>
           </Row>
         </CardBlock>

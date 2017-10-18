@@ -13,7 +13,7 @@ export default class Form extends Component {
     }
 
     this.setState(state);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.props.handleChange ? this.props.handleChange : this.handleChange.bind(this);
     this.onClick = this.onClick.bind(this);
   }
 
