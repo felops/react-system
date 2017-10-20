@@ -16,6 +16,7 @@ export default class Login extends Component {
             <Card>
               <CardHeader tag="h3">Login</CardHeader>
               <CardBlock>
+                <p className="text-danger">{this.props.msg}</p>
                 <LoginForm button={button}/>
               </CardBlock>
             </Card>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Login from './screens/auth/Login';
 import Router from './config/Routes';
+import axios from 'axios';
 
 export default class App extends Component {
   constructor(props) {
@@ -13,9 +14,13 @@ export default class App extends Component {
   }
 
   doLogin(e, state) {
-    this.setState({
-      isProfessor: parseInt(state.type)===2,
-      isLoggedIn: true
+    axios.post('http://localhost:3000/api/login', state).then((response) => {
+      console.log(response);
+      this.setState({
+        isProfessor: parseInt(state.type)===2,
+        isLoggedIn: response.data.data,
+        loginMessage: response.data.msg
+      });
     });
   }
 
@@ -26,13 +31,13 @@ export default class App extends Component {
   }
 
   render() {
-    if(this.state.isLoggedIn) {
+    if(this.state.isLoggedIn === true) {
       return (
         <Router doLogoff={this.doLogoff.bind(this)} isProfessor={this.state.isProfessor}/>
       );
     } else {
       return (
-        <Login doLogin={this.doLogin.bind(this)}/>
+        <Login doLogin={this.doLogin.bind(this)} msg={this.state.loginMessage}/>
       );
     }
   }
