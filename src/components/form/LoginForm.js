@@ -8,21 +8,25 @@ const inputs = [
     id: 'type',
     label: 'Usuário',
     options: [
+      {id: 0, name: 'SELECIONE'},
       {id: 1, name: 'Estudante'},
       {id: 2, name: 'Professor'}
-    ]
+    ],
+    required: true
   },
   {
     type: 'email',
     name: 'email',
     id: 'email',
-    label: 'E-mail'
+    label: 'E-mail',
+    required: true
   },
   {
     type: 'password',
     name: 'password',
     id: 'password',
-    label: 'Senha'
+    label: 'Senha',
+    required: true
   }
 ];
 

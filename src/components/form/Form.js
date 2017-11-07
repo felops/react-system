@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import InputForm from './InputForm';
 import { Button } from 'reactstrap';
+import validator from 'validator';
 
 export default class Form extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      buttonDisabled: true
+    }
+  }
+
   componentDidMount() {
     let state = {};
 
@@ -17,10 +25,29 @@ export default class Form extends Component {
     this.onClick = this.onClick.bind(this);
   }
 
+  validate(input) {
+    let isValid = true,
+        value = this.state[input.name];
+
+    if(input.required) {
+      if(!value) {
+        isValid = false;
+      } else if(validator.isEmpty(value)) {
+        isValid = false;
+      } else if(input.type === 'select' && parseInt(value) === 0) {
+        isValid = false;
+      } else if(input.type === 'email' && !validator.isEmail(value)) {
+        isValid = false;
+      }
+    }
+
+    return isValid;
+  }
+
   handleChange(e) {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
+    this.setState({ [e.target.name]: e.target.value }, () =>
+      this.setState({ buttonDisabled: this.props.inputs.map(input => this.validate(input)).includes(false) })
+    );
   }
 
   onClick(e) {
@@ -38,7 +65,7 @@ export default class Form extends Component {
     }
 
     if(this.props.button) {
-      button = <Button color="primary" onClick={this.onClick}>{this.props.button.text}</Button>;
+      button = <Button color="primary" onClick={this.onClick} className="cursor-pointer" disabled={this.state.buttonDisabled}>{this.props.button.text}</Button>;
     }
 
     return (
