@@ -7,7 +7,8 @@ export default class InputGroup extends Component {
     const props = this.props
 
     if(props.label) {
-      label = <Label for={props.id}>{props.label}</Label>
+      let requiredIndicator = props.required ? '*' : ''
+      label = <Label for={props.id}>{props.label} <strong>{requiredIndicator}</strong></Label>
     }
 
     switch(props.type) {
