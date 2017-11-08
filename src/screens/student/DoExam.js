@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import _ from 'lodash/collection'
 import axios from 'axios'
 import ExamQuestion from './../../components/ExamQuestion'
 
@@ -68,6 +69,8 @@ export default class DoExam extends Component {
         return option
       })
 
+      question.Question.QuestionOptions = _.shuffle(question.Question.QuestionOptions)
+
       let text = arrLength === i+1 ? 'Salvar e finalizar' : 'Salvar e prosseguir'
       question.button = {
         onClick: this.buttonClick.bind(this),
@@ -83,8 +86,10 @@ export default class DoExam extends Component {
 
     if(exam) {
       axios.get('http://localhost:3000/api/loadExam/' + exam).then((response) => {
+        let questions = _.shuffle(response.data)
+
         this.setState({
-          questions: this.formify(response.data),
+          questions: this.formify(questions),
           currentQuestion: response.data[0].id
         })
       })
