@@ -14,3 +14,11 @@ section {
 .helper-margin-top {
   margin-top: 1.25rem;
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.rc-steps {
+  margin-bottom: 1rem;
+}
