@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, CardDeck, CardImg, CardBlock, CardTitle, Button } from 'reactstrap'
+import { Card, CardDeck, CardImg, CardBlock, Button } from 'reactstrap'
 import LoginFormProfessor from './LoginFormProfessor'
 import LoginFormStudent from './LoginFormStudent'
 
