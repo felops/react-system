@@ -10,14 +10,13 @@ export default class App extends Component {
     this.state = {
       isProfessor: false,
       isLoggedIn: false
-    };
+    }
   }
 
   doLogin(e, state) {
-    axios.post('http://localhost:3000/api/login', state).then((response) => {
-      console.log(response)
+    axios.post('http://localhost:3000/api/' + state.userType + '/login/', state).then((response) => {
       this.setState({
-        isProfessor: parseInt(state.type)===2,
+        isProfessor: state.userType === 'professor',
         isLoggedIn: response.data.data,
         loginMessage: response.data.msg
       })

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import LoginForm from './../../components/form/LoginForm'
+import LoginForm from './../../components/form/login/LoginForm'
 import { Card, CardHeader, CardBlock, Container, Row, Col } from 'reactstrap'
 
 export default class Login extends Component {
