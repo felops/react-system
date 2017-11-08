@@ -26,8 +26,6 @@ export default class InputGroup extends Component {
             </Input>
           </FormGroup>
         )
-
-        break
       case 'radio':
         return (
           <FormGroup check>
@@ -37,8 +35,6 @@ export default class InputGroup extends Component {
             </Label>
           </FormGroup>
         )
-
-        break
       default:
         return (
           <FormGroup>
