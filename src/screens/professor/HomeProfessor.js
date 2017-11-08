@@ -1,30 +1,30 @@
-import React, { Component } from 'react';
-import ExamProfessorCard from './../../components/ExamProfessorCard';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import React, { Component } from 'react'
+import ExamProfessorCard from './../../components/ExamProfessorCard'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 export default class HomeProfessor extends Component {
   createList(exams) {
     return exams.map((exam, i) =>
       <ExamProfessorCard key={i} exam={exam}/>
-    );
+    )
   }
 
   componentWillMount() {
-    this.setState({exams: 'carregando..'});
+    this.setState({exams: 'carregando..'})
 
     axios.get('http://localhost:3000/api/exams').then((response) => {
       response.data.map(exam => {
-        exam.total = 42;
-        exam.wellPerformed = 25;
+        exam.total = 42
+        exam.wellPerformed = 25
 
-        return exam;
-      });
+        return exam
+      })
 
       this.setState({
          exams: this.createList(response.data)
-      });
-    });
+      })
+    })
   }
 
   render() {
@@ -38,6 +38,6 @@ export default class HomeProfessor extends Component {
           {this.state.exams}
         </section>
       </div>
-    );
+    )
   }
 }

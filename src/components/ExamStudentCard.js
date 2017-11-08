@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import ProgressBar from './ProgressBar';
-import { Card, CardBlock, CardTitle, CardSubtitle } from 'reactstrap';
+import React, { Component } from 'react'
+import ProgressBar from './ProgressBar'
+import { Card, CardBlock, CardTitle, CardSubtitle } from 'reactstrap'
 
 export default class ExamStudentCard extends Component {
   calcPercentage(value, total) {
-    return value / total * 100;
+    return value / total * 100
   }
 
   render() {
@@ -24,6 +24,6 @@ export default class ExamStudentCard extends Component {
           <ProgressBar value={this.calcPercentage(this.props.exam.right,this.props.exam.total)}/>
         </CardBlock>
       </Card>
-    );
+    )
   }
 }

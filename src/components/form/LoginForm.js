@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Form from './Form';
+import React, { Component } from 'react'
+import Form from './Form'
 
 const inputs = [
   {
@@ -28,7 +28,7 @@ const inputs = [
     label: 'Senha',
     required: true
   }
-];
+]
 
 export default class ExamForm extends Component {
   render() {
@@ -36,6 +36,6 @@ export default class ExamForm extends Component {
       <div>
         <Form inputs={inputs} button={this.props.button}/>
       </div>
-    );
+    )
   }
 }

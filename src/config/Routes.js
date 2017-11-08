@@ -1,14 +1,14 @@
-import React from 'react';
-import Content from './../components/layout/Content';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import { Container, Collapse, Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap';
+import React from 'react'
+import Content from './../components/layout/Content'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { Container, Collapse, Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap'
 
-import CreateExam from './../screens/professor/CreateExam';
-import ExameAvalytics from './../screens/professor/ExameAvalytics';
-import HomeProfessor from './../screens/professor/HomeProfessor';
+import CreateExam from './../screens/professor/CreateExam'
+import ExameAvalytics from './../screens/professor/ExameAvalytics'
+import HomeProfessor from './../screens/professor/HomeProfessor'
 
-import HomeStudent from './../screens/student/HomeStudent';
-import DoExam from './../screens/student/DoExam';
+import HomeStudent from './../screens/student/HomeStudent'
+import DoExam from './../screens/student/DoExam'
 
 const professor = ({
   links: (
@@ -28,7 +28,7 @@ const professor = ({
       <Route path="/estatiscas/:id" component={ExameAvalytics} />
     </Content>
   ),
-});
+})
 
 const student = ({
   links: (
@@ -44,30 +44,30 @@ const student = ({
       <Route path="/avaliacao/:id" component={DoExam} />
     </Content>
   ),
-});
+})
 
 export default class Routes extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
-    this.toggle = this.toggle.bind(this);
+    this.toggle = this.toggle.bind(this)
     this.state = {
       isOpen: false
-    };
+    }
   }
 
   componentWillMount() {
     if (this.props.isProfessor) {
-      this.rounting = professor;
+      this.rounting = professor
     } else {
-      this.rounting = student;
+      this.rounting = student
     }
   }
 
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
-    });
+    })
   }
 
   render() {
@@ -92,6 +92,6 @@ export default class Routes extends React.Component {
           </Content>
         </div>
       </Router>
-    );
+    )
   }
 }

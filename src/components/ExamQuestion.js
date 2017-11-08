@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Card, CardBlock, CardTitle, Col, Row } from 'reactstrap';
-import Form from './form/Form';
+import React, { Component } from 'react'
+import { Card, CardBlock, CardTitle, Col, Row } from 'reactstrap'
+import Form from './form/Form'
 
 export default class ExamQuestion extends Component {
   render() {
@@ -18,6 +18,6 @@ export default class ExamQuestion extends Component {
           </Row>
         </CardBlock>
       </Card>
-    );
+    )
   }
 }

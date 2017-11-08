@@ -1,29 +1,29 @@
-import React, { Component } from 'react';
-import { Progress } from 'reactstrap';
+import React, { Component } from 'react'
+import { Progress } from 'reactstrap'
 
 export default class ProgressBar extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
-    this.state = { color: 'success' } ;
+    this.state = { color: 'success' }
   }
 
   componentWillMount() {
-    let color;
+    let color
 
     if (this.props.value < 30) {
-      color = 'danger';
+      color = 'danger'
     } else if (this.props.value < 65) {
-      color = 'warning';
+      color = 'warning'
     } else {
-      color = 'success';
+      color = 'success'
     }
-    this.setState({ color });
+    this.setState({ color })
   }
 
   render() {
     return (
       <Progress value={this.props.value}  color={this.state.color} />
-    );
+    )
   }
 }

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Exam from './../../components/Exam';
+import React, { Component } from 'react'
+import Exam from './../../components/Exam'
 
 export default class CreateExam extends Component {
   render() {
@@ -10,6 +10,6 @@ export default class CreateExam extends Component {
         <p>A maior dificuldade encontrada foi em Trigonometria.</p>
         <Exam exam={this.props.match.params.id}/>
       </div>
-    );
+    )
   }
 }

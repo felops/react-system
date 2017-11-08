@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import React, { Component } from 'react'
+import { Container, Row, Col } from 'reactstrap'
 
 export default class  extends Component {
   render() {
@@ -11,6 +11,6 @@ export default class  extends Component {
           </Col>
         </Row>
       </Container>
-    );
+    )
   }
 }
