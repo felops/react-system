@@ -8,7 +8,6 @@ const inputs = [
     id: 'type',
     label: 'Usuário',
     options: [
-      {id: 0, name: 'SELECIONE'},
       {id: 1, name: 'Estudante'},
       {id: 2, name: 'Professor'}
     ],

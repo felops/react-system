@@ -20,6 +20,7 @@ export default class InputGroup extends Component {
           <FormGroup>
             {label}
             <Input type='select' name={props.name} id={props.id} onChange={props.onChange} required={props.required}>
+              <option key="0" value="0">SELECIONE</option>
               {options}
             </Input>
           </FormGroup>
