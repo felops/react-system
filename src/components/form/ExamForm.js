@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import Form from './Form';
-import axios from 'axios';
+import React, { Component } from 'react'
+import Form from './Form'
+import axios from 'axios'
 
 const inputs = [
   {
@@ -83,30 +83,30 @@ const inputs = [
     id: 'questions',
     label: 'Número de Questões'
   }
-];
+]
 
 export default class ExamForm extends Component {
   onClick(e, state) {
-    let data = {};
+    let data = {}
     for(let item in state) {
-      data[item] = state[item];
+      data[item] = state[item]
     }
 
     axios.post('http://localhost:3000/api/exam', data).then((response) =>
       console.log(response)
-    );
+    )
   }
 
   render() {
     let button = {
       onClick: this.onClick,
       text: 'Cadastrar'
-    };
+    }
 
     return (
       <div>
         <Form inputs={inputs} button={button}/>
       </div>
-    );
+    )
   }
 }
