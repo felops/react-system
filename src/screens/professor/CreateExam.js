@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ExamForm from './../../components/form/ExamForm'
+import ExamForm from './../../components/form/exam/ExamForm'
 
 export default class CreateExam extends Component {
   render() {
