@@ -53,7 +53,7 @@ export default class DoExam extends Component {
         ...this.state.responses,
         [question]: e.target.value
       },
-      currentQuestion: parseInt(question),
+      currentQuestion: parseInt(question, 10),
     })
   }
 

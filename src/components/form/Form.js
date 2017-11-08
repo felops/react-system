@@ -34,7 +34,7 @@ export default class Form extends Component {
         isValid = false
       } else if(validator.isEmpty(value)) {
         isValid = false
-      } else if(input.type === 'select' && parseInt(value) === 0) {
+      } else if(input.type === 'select' && parseInt(value, 10) === 0) {
         isValid = false
       } else if(input.type === 'email' && !validator.isEmail(value)) {
         isValid = false
