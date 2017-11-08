@@ -4,13 +4,16 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
-    "bootstrap": "^4.0.0-alpha.6",
+    "bootstrap": "4.0.0-alpha.6",
+    "lodash": "^4.17.4",
+    "rc-steps": "^3.0.0",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14",
     "react-transition-group": "^1.1.2",
-    "reactstrap": "^4.8.0"
+    "reactstrap": "4.8.0",
+    "validator": "^9.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
