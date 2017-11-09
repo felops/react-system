@@ -29,24 +29,29 @@ export default class LoginForm extends Component {
     }
 
     return (
-      <CardDeck>
-        <Card className="text-center cursor-pointer card-shadow" onClick={() => this.onClick('Professor')}>
-          <div className="text-center">
-            <CardImg top width="50%" src="/images/teacher-desk.png" alt="Professor" />
-          </div>
-          <CardBlock>
-            <Button className="cursor-pointer">Acessar como Professor</Button>
-          </CardBlock>
-        </Card>
-        <Card className="text-center cursor-pointer card-shadow" onClick={() => this.onClick('Aluno')}>
-          <div className="text-center">
-            <CardImg top width="50%" src="/images/test.png" alt="Aluno" />
-          </div>
-          <CardBlock>
-            <Button className="cursor-pointer">Acessar como Aluno</Button>
-          </CardBlock>
-        </Card>
-      </CardDeck>
+      <div>
+        <CardDeck>
+          <Card className="text-center cursor-pointer card-shadow" onClick={() => this.onClick('Professor')}>
+            <div className="text-center">
+              <CardImg top width="50%" src="/images/teacher-desk.png" alt="Professor" />
+            </div>
+            <CardBlock>
+              <Button color="primary" outline className="cursor-pointer">Acessar como Professor</Button>
+            </CardBlock>
+          </Card>
+          <Card className="text-center cursor-pointer card-shadow" onClick={() => this.onClick('Aluno')}>
+            <div className="text-center">
+              <CardImg top width="50%" src="/images/agenda.png" alt="Aluno" />
+            </div>
+            <CardBlock>
+              <Button color="primary" outline className="cursor-pointer">Acessar como Aluno</Button>
+            </CardBlock>
+          </Card>
+        </CardDeck>
+        <section className="text-right">
+          Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com" title="Flaticon">www.flaticon.com</a>
+        </section>
+      </div>
     )
   }
 }
