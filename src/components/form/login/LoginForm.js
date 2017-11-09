@@ -30,7 +30,7 @@ export default class LoginForm extends Component {
 
     return (
       <CardDeck>
-        <Card className="text-center cursor-pointer" onClick={() => this.onClick('Professor')}>
+        <Card className="text-center cursor-pointer card-shadow" onClick={() => this.onClick('Professor')}>
           <div className="text-center">
             <CardImg top width="50%" src="/images/teacher-desk.png" alt="Professor" />
           </div>
@@ -38,7 +38,7 @@ export default class LoginForm extends Component {
             <Button className="cursor-pointer">Acessar como Professor</Button>
           </CardBlock>
         </Card>
-        <Card className="text-center cursor-pointer" onClick={() => this.onClick('Aluno')}>
+        <Card className="text-center cursor-pointer card-shadow" onClick={() => this.onClick('Aluno')}>
           <div className="text-center">
             <CardImg top width="50%" src="/images/test.png" alt="Aluno" />
           </div>
