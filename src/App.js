@@ -14,7 +14,7 @@ export default class App extends Component {
   }
 
   doLogin(e, state) {
-    axios.post('/api/' + state.userType + '/login/', state).then((response) => {
+    axios.post('/api/login/' + state.userType, state).then((response) => {
       this.setState({
         isProfessor: state.userType === 'professor',
         isLoggedIn: response.data.data,
