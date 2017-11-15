@@ -13,7 +13,7 @@ export default class HomeProfessor extends Component {
   componentWillMount() {
     this.setState({exams: 'carregando..'})
 
-    axios.get('http://localhost:3000/api/exams').then((response) => {
+    axios.get('/api/exams').then((response) => {
       response.data.map(exam => {
         exam.total = 42
         exam.wellPerformed = 25

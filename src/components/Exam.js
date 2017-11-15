@@ -28,7 +28,7 @@ export default class Exam extends Component {
     let exam = this.props.exam
 
     if(exam) {
-      axios.get('http://localhost:3000/api/loadExam/' + exam).then((response) => {
+      axios.get('/api/loadExam/' + exam).then((response) => {
         this.setState({
           questions: this.createQuestionComponents(response.data)
         })
@@ -53,7 +53,7 @@ export default class Exam extends Component {
         })
     }
 
-    axios.post('http://localhost:3000/api/examStudent', data).then((response) => {
+    axios.post('/api/examStudent', data).then((response) => {
       console.log(response)
     })
   }

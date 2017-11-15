@@ -35,7 +35,7 @@ export default class ExamForm extends Component {
         currentStep: nextStep,
       })
     } else {
-    /*    axios.post('http://localhost:3000/api/exam', data).then((response) =>
+    /*    axios.post('/api/exam', data).then((response) =>
           console.log(response)
         ) */
       this.setState({
