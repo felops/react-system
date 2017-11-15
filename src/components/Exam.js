@@ -28,7 +28,7 @@ export default class Exam extends Component {
     let exam = this.props.exam
 
     if(exam) {
-      axios.get('/api/loadExam/' + exam).then((response) => {
+      axios.get('/api/exam/' + exam).then((response) => {
         this.setState({
           questions: this.createQuestionComponents(response.data)
         })

@@ -22,9 +22,10 @@ export default class DoExam extends Component {
 
   buttonClick(e) {
     const state = this.state
+    console.log(state);
 
     if(state.responses[state.currentQuestion]) {
-      axios.post('/api/examStudent', {
+      axios.post('/api/exam/' + 4 + '/question/' + state.currentQuestion, {
         student: 1,
         examQuestion: state.currentQuestion,
         questionOption: state.responses[state.currentQuestion]
@@ -85,7 +86,7 @@ export default class DoExam extends Component {
     let exam = this.props.match.params.id
 
     if(exam) {
-      axios.get('/api/loadExam/' + exam).then((response) => {
+      axios.get('/api/exam/' + exam).then((response) => {
         let questions = _.shuffle(response.data)
 
         this.setState({

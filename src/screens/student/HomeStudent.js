@@ -13,7 +13,7 @@ export default class HomeStudent extends Component {
   componentWillMount() {
     this.setState({exams: 'carregando..'})
 
-    axios.get('/api/exams').then((response) => {
+    axios.get('/api/exam').then((response) => {
       response.data.map(exam => {
         exam.total = 42
         exam.right = 25
