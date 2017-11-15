@@ -45,7 +45,6 @@ export default class Form extends Component {
   }
 
   handleChange(e) {
-    console.log(this.props.inputs)
     this.setState({ [e.target.name]: e.target.value }, () =>
       this.setState({ buttonDisabled: this.props.inputs.map(input => this.validate(input)).includes(false) })
     )
