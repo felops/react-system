@@ -25,12 +25,13 @@ export default class Exam extends Component {
 
   componentWillMount() {
     this.setState({questions: null })
-    let exam = this.props.exam
+    let exam = this.props.match.params.id
 
     if(exam) {
       axios.get('/api/exam/' + exam).then((response) => {
         this.setState({
-          questions: this.createQuestionComponents(response.data)
+          exam: response.data[0],
+          questions: this.createQuestionComponents(response.data[0].ExamQuestions)
         })
       })
     }
@@ -42,29 +43,13 @@ export default class Exam extends Component {
     })
   }
 
-  sendExam(e) {
-    let data = []
-    for(let item in this.state) {
-      if(item !== 'questions')
-        data.push({
-          student: 1,
-          examQuestion: item.substr(1),
-          questionOption: this.state[item]
-        })
-    }
-
-    axios.post('/api/examStudent', data).then((response) => {
-      console.log(response)
-    })
-  }
-
   render() {
     if(this.state.questions) {
       return (
-        <section>
-          {this.state.questions}
-          <Button color="primary" className="helper-margin-top float-right" onClick={this.sendExam.bind(this)}>Enviar</Button>
-        </section>
+        <div>
+          <h3>{ this.state.exam.title }</h3>
+          { this.state.questions }
+        </div>
       )
     } else {
       return(<p className='text-muted'>carregando..</p>)

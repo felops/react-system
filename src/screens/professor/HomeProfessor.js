@@ -1,41 +1,19 @@
 import React, { Component } from 'react'
+import ExamsTable from './../../components/professor/ExamsTable'
 import ExamProfessorCard from './../../components/ExamProfessorCard'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 export default class HomeProfessor extends Component {
-  createList(exams) {
-    return exams.map((exam, i) =>
-      <ExamProfessorCard key={i} exam={exam}/>
-    )
-  }
-
-  componentWillMount() {
-    this.setState({exams: 'carregando..'})
-
-    axios.get('/api/exam').then((response) => {
-      response.data.map(exam => {
-        exam.total = 42
-        exam.wellPerformed = 25
-
-        return exam
-      })
-
-      this.setState({
-         exams: this.createList(response.data)
-      })
-    })
-  }
-
   render() {
     return (
       <div>
-        <h3>Avaliações em andamento</h3>
-        <p>Não há avaliações em andamento no momento.</p>
-        <Link to="/avaliacao">Criar Avaliação</Link>
+        <div className="float-right">
+          <Link className="btn btn-outline-primary" to="/avaliacao">Criar Avaliação</Link>
+        </div>
+        <h3>Avaliações</h3>
         <section>
-          <h3>Avaliações anteriores</h3>
-          {this.state.exams}
+          <ExamsTable professor={1}/>
         </section>
       </div>
     )
