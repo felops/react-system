@@ -18,10 +18,13 @@ export default class InputGroup extends Component {
     switch(props.type) {
       case 'select':
         element = <Select {...props}/>
+        break
       case 'radio':
         element = <Radio {...props} />
+        break
       case 'rangedatetime':
         element = <DateTimeRange onChange={props.onChange}/>
+        break
       default:
         element = <Input {...props}/>
     }
