@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Button } from 'reactstrap'
 
-import ExamQuestion from './ExamQuestion'
+import ExamQuestionCard from './ExamQuestionCard'
 
 export default class Exam extends Component {
   createQuestionComponents(questions) {
@@ -19,7 +19,7 @@ export default class Exam extends Component {
         return option
       })
 
-      return (<ExamQuestion key={question.id} {...question} title={'Questão ' + (i + 1)} handleChange={this.handleChange.bind(this)}/>)
+      return (<ExamQuestionCard key={question.id} {...question} title={'Questão ' + (i + 1)} handleChange={this.handleChange.bind(this)}/>)
     })
   }
 

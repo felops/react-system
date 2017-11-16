@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import _ from 'lodash'
 import axios from 'axios'
 import { Button, Card, CardBlock } from 'reactstrap'
-import ExamQuestion from './../../components/ExamQuestion'
+import ExamQuestionCard from './../../components/ExamQuestionCard'
 import moment from 'moment'
 
 import 'rc-steps/assets/index.css'
@@ -175,7 +175,7 @@ export default class DoExam extends Component {
               {steps}
             </Steps>
             {this.renderError()}
-            <ExamQuestion
+            <ExamQuestionCard
               key={questions[step - 1].id}
               {...questions[step - 1]}
               title={'Questão ' + (step)}
