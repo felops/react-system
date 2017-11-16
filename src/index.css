@@ -11,6 +11,10 @@ section {
   margin-top: 30px;
 }
 
+table {
+  margin-top: 20px;
+}
+
 .helper-margin-top {
   margin-top: 1.25rem;
 }
