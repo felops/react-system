@@ -36,7 +36,7 @@ export default class AvailableExamsTable extends Component {
       <table className='table table-sm'>
         <thead>
           <tr>
-            <th>Nome</th>
+            <th>Título</th>
             <th>Início</th>
             <th>Fim</th>
           </tr>

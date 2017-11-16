@@ -37,7 +37,7 @@ export default class ExamsTable extends Component {
       <table className='table table-sm'>
         <thead>
           <tr>
-            <th>Nome</th>
+            <th>Título</th>
             <th>Início</th>
             <th>Prazo</th>
           </tr>
