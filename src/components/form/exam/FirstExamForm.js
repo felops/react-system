@@ -48,10 +48,10 @@ const inputs = [
     required: true
   },
   {
-    type: 'number',
-    name: 'duration',
-    id: 'duration',
-    label: 'Duração (min)',
+    type: 'rangedatetime',
+    name: 'range',
+    id: 'range',
+    label: 'Período',
     required: true
   }
 ]

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import _ from 'lodash/object'
 import FirstExamForm from './FirstExamForm'
 import SectionExamForm from './SectionExamForm'
 
@@ -20,6 +21,17 @@ export default class ExamForm extends Component {
     }
   }
 
+  moveToNextStep() {
+    let nextStep = this.state.currentStep + 1
+    if(nextStep < this.state.steps.length) {
+      this.setState({
+        currentStep: nextStep,
+      })
+    } else {
+      this.setState({ isFinished: true })
+    }
+  }
+
   onClick(e, state) {
     if(state.sections > 1) {
       let steps = this.state.steps
@@ -29,19 +41,37 @@ export default class ExamForm extends Component {
       this.setState(steps)
     }
 
-    let nextStep = this.state.currentStep + 1
-    if(nextStep < this.state.steps.length) {
-      this.setState({
-        currentStep: nextStep,
+    if(this.state.currentStep === 0) {
+      let data = _.omit(state, ['buttonDisabled', 'range', 'sections'])
+
+      data = {
+        ...data,
+        dateStart: state.range[0].toDate(),
+        dateEnd: state.range[1].toDate()
+      }
+
+      axios.post('/api/exam', data).then((response) => {
+        this.setState({exam: response.data.data.id})
+        this.moveToNextStep()
       })
     } else {
-    /*    axios.post('/api/exam', data).then((response) =>
-          console.log(response)
-        ) */
-      this.setState({
-        isFinished: true
+      let data = _.omit(state, ['buttonDisabled'])
+      axios.post('/api/exam/' + this.state.exam + '/question', data).then((response) => {
+        if(response.data.data) {
+          this.moveToNextStep()
+        } else {
+          this.setState({ error: response.data.msg })
+        }
       })
     }
+  }
+
+  renderError() {
+    if (this.state.error) {
+      return <div className="alert alert-danger" role="alert">{this.state.error}</div>
+    }
+
+    return null
   }
 
   render() {
@@ -64,6 +94,7 @@ export default class ExamForm extends Component {
         <Steps labelPlacement="vertical" current={this.state.currentStep}>
           {this.state.steps.map((step, i) => <Step key={i} {...step} />)}
         </Steps>
+        {this.renderError()}
         {
           this.state.steps.map((step, i) => {
             let className = this.state.currentStep === i ? '' : 'd-none'

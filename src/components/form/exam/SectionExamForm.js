@@ -11,8 +11,8 @@ const inputs = [
   },
   {
     type: 'select',
-    name: 'field',
-    id: 'field',
+    name: 'disciplineField',
+    id: 'disciplineField',
     label: 'Categoria',
     options: [
       {id:1, name:'Geometria'},
