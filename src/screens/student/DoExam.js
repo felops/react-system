@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import _ from 'lodash/collection'
 import axios from 'axios'
+import { Button, Card, CardBlock } from 'reactstrap'
 import ExamQuestion from './../../components/ExamQuestion'
 
 import 'rc-steps/assets/index.css'
@@ -13,8 +14,11 @@ export default class DoExam extends Component {
     this.state = {
       step: 0,
       error: '',
+      exam: 4,
+      student: 1,
       questions: null,
       responses: {},
+      isStarting: true,
       isFinished: false,
       currentQuestion: null
     }
@@ -22,18 +26,31 @@ export default class DoExam extends Component {
 
   buttonClick(e) {
     const state = this.state
-    console.log(state);
 
-    if(state.responses[state.currentQuestion]) {
-      axios.post('/api/exam/' + 4 + '/question/' + state.currentQuestion, {
-        student: 1,
-        examQuestion: state.currentQuestion,
-        questionOption: state.responses[state.currentQuestion]
+    if(state.isStarting || state.responses[state.currentQuestion]) {
+      let nextStep = state.step + 1
+      let nextQuestion
+      if(nextStep === 1) {
+        nextQuestion = state.questions[state.step].id
+      } else {
+        nextQuestion = state.questions[state.step - 1].id
+        if(state.questions.length >= nextStep) {
+          nextQuestion = state.questions[nextStep - 1].id
+        }
+      }
+
+      axios.post('/api' +
+                  '/student/' + state.student +
+                  '/exam/' + state.exam +
+                  '/question/' + state.currentQuestion,
+      {
+        questionOption: state.responses[state.currentQuestion],
+        nextQuestion: nextQuestion,
       }).then((response) => {
-        let nextStep = state.step + 1
-        if(nextStep < state.questions.length) {
+        if(nextStep < state.questions.length + 1) {
           this.setState({
-            currentQuestion: state.questions[nextStep].id,
+            isStarting: false,
+            currentQuestion: nextQuestion,
             step: nextStep
           })
         } else {
@@ -72,7 +89,7 @@ export default class DoExam extends Component {
 
       question.Question.QuestionOptions = _.shuffle(question.Question.QuestionOptions)
 
-      let text = arrLength === i+1 ? 'Salvar e finalizar' : 'Salvar e prosseguir'
+      let text = arrLength - 1 === i ? 'Salvar e finalizar' : 'Salvar e prosseguir'
       question.button = {
         onClick: this.buttonClick.bind(this),
         text: text
@@ -86,12 +103,11 @@ export default class DoExam extends Component {
     let exam = this.props.match.params.id
 
     if(exam) {
-      axios.get('/api/exam/' + exam).then((response) => {
+      axios.get('/api/exam/' + exam + '/question').then((response) => {
         let questions = _.shuffle(response.data)
-
         this.setState({
           questions: this.formify(questions),
-          currentQuestion: response.data[0].id
+          currentQuestion: 0
         })
       })
     }
@@ -107,19 +123,43 @@ export default class DoExam extends Component {
 
   render() {
       const state = this.state,
+            isStarting = state.isStarting,
             isFinished = state.isFinished,
             questions = state.questions,
             step = state.step
 
       if(isFinished) {
         return (
-          <div>
-            <h5>Respostas enviadas!</h5>
-            <p>Aguarde o final do exame para consultar seu desempenho.</p>
-          </div>
+          <Card className="card-margin">
+            <CardBlock>
+              <h5>Respostas enviadas!</h5>
+              <p>Aguarde o final do exame para consultar seu desempenho.</p>
+            </CardBlock>
+          </Card>
         )
       } else if(questions) {
         let steps = questions.map((question, i) => <Step key={i}/>)
+        steps.push(<Step key={questions.length + 1}/>)
+
+        if(isStarting) {
+          return (
+            <div>
+              <Steps current={this.state.step}>
+                {steps}
+              </Steps>
+              <Card className="card-margin">
+                <CardBlock>
+                  <h5>Avaliação</h5>
+                  <div>Você está pronto para responder às {questions.length} questões?</div>
+                  <p><small className="text-muted">Boa sorte ;)</small></p>
+                  <Button color="primary" onClick={this.buttonClick.bind(this)} className="cursor-pointer">
+                    Sim, vamos lá!
+                  </Button>
+                </CardBlock>
+              </Card>
+            </div>
+          )
+        }
 
         return (
           <div>
@@ -128,9 +168,9 @@ export default class DoExam extends Component {
             </Steps>
             {this.renderError()}
             <ExamQuestion
-              key={questions[step].id}
-              {...questions[step]}
-              title={'Questão ' + (step + 1)}
+              key={questions[step - 1].id}
+              {...questions[step - 1]}
+              title={'Questão ' + (step)}
               handleChange={this.handleRadioChange.bind(this)} />
           </div>
         )
