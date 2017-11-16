@@ -32,7 +32,7 @@ export default class Form extends Component {
     if(input.required) {
       if(!value) {
         isValid = false
-      } else if(validator.isEmpty(value)) {
+      } else if(validator.isEmpty(value.toString())) {
         isValid = false
       } else if(input.type === 'select' && parseInt(value, 10) === 0) {
         isValid = false
@@ -71,7 +71,9 @@ export default class Form extends Component {
     return (
       <div>
         {inputForms}
-        {button}
+        <div>
+          {button}
+        </div>
       </div>
     )
   }
