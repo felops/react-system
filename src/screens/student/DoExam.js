@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import _ from 'lodash/collection'
+import _ from 'lodash'
 import axios from 'axios'
 import { Button, Card, CardBlock } from 'reactstrap'
 import ExamQuestion from './../../components/ExamQuestion'
+import moment from 'moment'
 
 import 'rc-steps/assets/index.css'
 import 'rc-steps/assets/iconfont.css'
@@ -103,9 +104,12 @@ export default class DoExam extends Component {
     let exam = this.props.match.params.id
 
     if(exam) {
-      axios.get('/api/exam/' + exam + '/question').then((response) => {
-        let questions = _.shuffle(response.data)
+      axios.get('/api/exam/' + exam).then((response) => {
+        let exam = response.data[0]
+        let questions = _.shuffle(exam.ExamQuestions)
+
         this.setState({
+          exam: _.pick(exam, ['dateStart', 'dateEnd', 'title']),
           questions: this.formify(questions),
           currentQuestion: 0
         })
@@ -123,6 +127,7 @@ export default class DoExam extends Component {
 
   render() {
       const state = this.state,
+            exam = state.exam,
             isStarting = state.isStarting,
             isFinished = state.isFinished,
             questions = state.questions,
@@ -149,8 +154,11 @@ export default class DoExam extends Component {
               </Steps>
               <Card className="card-margin">
                 <CardBlock>
-                  <h5>Avaliação</h5>
+                  <h5>{exam.title}</h5>
                   <div>Você está pronto para responder às {questions.length} questões?</div>
+                  <div>
+                    As questões são salvas assim que você prossegue para a próxima. A submição das questões termina em {moment(exam.dateEnd).format('DD/MM/YYYY')} às {moment(exam.dateEnd).format('HH:mm')}.
+                  </div>
                   <p><small className="text-muted">Boa sorte ;)</small></p>
                   <Button color="primary" onClick={this.buttonClick.bind(this)} className="cursor-pointer">
                     Sim, vamos lá!
