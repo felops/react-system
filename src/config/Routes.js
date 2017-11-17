@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { Container, Collapse, Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap'
 
 import Exam from './../components/Exam'
-import CreateExam from './../screens/professor/CreateExam'
+import ExamCreate from './../screens/professor/create/ExamCreate'
 import ExameAvalytics from './../screens/professor/ExameAvalytics'
 import HomeProfessor from './../screens/professor/HomeProfessor'
 
@@ -25,7 +25,7 @@ const professor = ({
   routes: (
     <Content>
       <Route exact path="/" component={HomeProfessor} />
-      <Route exact path="/avaliacao" component={CreateExam} />
+      <Route exact path="/avaliacao" component={ExamCreate} />
       <Route exact path="/estatiscas/:id" component={ExameAvalytics} />
       <Route path="/avaliacao/:id/detalhar" component={Exam} />
     </Content>

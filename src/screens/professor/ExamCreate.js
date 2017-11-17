@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ExamForm from './../../components/form/exam/ExamForm'
 
-export default class CreateExam extends Component {
+export default class ExamCreate extends Component {
   render() {
     return (
       <div>
