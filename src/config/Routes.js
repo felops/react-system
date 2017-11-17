@@ -7,6 +7,10 @@ import Exam from './../components/Exam'
 import ExamCreate from './../screens/professor/create/ExamCreate'
 import ExameAvalytics from './../screens/professor/ExameAvalytics'
 import HomeProfessor from './../screens/professor/HomeProfessor'
+import DisciplineCreate from './../screens/professor/create/DisciplineCreate'
+import DisciplineFieldCreate from './../screens/professor/create/DisciplineFieldCreate'
+import QuestionCreate from './../screens/professor/create/QuestionCreate'
+import ProfessorCreate from './../screens/professor/create/ProfessorCreate'
 
 import HomeStudent from './../screens/student/HomeStudent'
 import DoExam from './../screens/student/DoExam'
@@ -18,13 +22,30 @@ const professor = ({
         <Link className="nav-link" to="/">Home</Link>
       </NavItem>
       <NavItem>
-        <Link className="nav-link" to="/avaliacao">Criar Avaliação</Link>
+        <Link className="nav-link" to="/avaliacao">Avaliação</Link>
       </NavItem>
+      <NavItem>
+        <Link className="nav-link" to="/categoria">Categoria</Link>
+      </NavItem>
+      <NavItem>
+        <Link className="nav-link" to="/disciplina">Disciplina</Link>
+      </NavItem>
+      <NavItem>
+        <Link className="nav-link" to="/questao">Questão</Link>
+      </NavItem>
+      <NavItem>
+        <Link className="nav-link" to="/professor">Professor</Link>
+      </NavItem>
+
     </Nav>
   ),
   routes: (
     <Content>
       <Route exact path="/" component={HomeProfessor} />
+      <Route exact path="/disciplina" component={DisciplineCreate} />
+      <Route exact path="/categoria" component={DisciplineFieldCreate} />
+      <Route exact path="/questao" component={QuestionCreate} />
+      <Route exact path="/professor" component={ProfessorCreate} />
       <Route exact path="/avaliacao" component={ExamCreate} />
       <Route exact path="/estatiscas/:id" component={ExameAvalytics} />
       <Route path="/avaliacao/:id/detalhar" component={Exam} />
