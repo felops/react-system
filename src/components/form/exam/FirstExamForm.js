@@ -16,28 +16,17 @@ const inputs = [
     required: true
   },
   {
-    type: 'select',
+    type: 'selectResource',
     name: 'discipline',
     id: 'discipline',
     label: 'Disciplina',
-    options: [
-      {id:1, name:'Matemática'},
-      {id:2, name:'Português'},
-      {id:3, name:'História'},
-    ],
     required: true
   },
   {
-    type: 'select',
+    type: 'selectResource',
     name: 'class',
     id: 'class',
     label: 'Classe',
-    options: [
-      {id:1, name:'1A'},
-      {id:2, name:'1B'},
-      {id:3, name:'2A'},
-      {id:4, name:'2B'}
-    ],
     required: true
   },
   {

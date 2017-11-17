@@ -4,6 +4,7 @@ import DateTimeRange from './elements/DateTimeRange'
 import Input from './elements/Input'
 import Radio from './elements/Radio'
 import Select from './elements/Select'
+import SelectResource from './elements/SelectResource'
 
 export default class InputGroup extends Component {
   render() {
@@ -16,6 +17,9 @@ export default class InputGroup extends Component {
     }
 
     switch(props.type) {
+      case 'selectResource':
+        element = <SelectResource {...props}/>
+        break
       case 'select':
         element = <Select {...props}/>
         break

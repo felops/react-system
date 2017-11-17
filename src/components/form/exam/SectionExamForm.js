@@ -10,15 +10,10 @@ const inputs = [
     required: true
   },
   {
-    type: 'select',
+    type: 'selectResource',
     name: 'disciplineField',
     id: 'disciplineField',
     label: 'Categoria',
-    options: [
-      {id:1, name:'Geometria'},
-      {id:2, name:'Trigonometria'},
-      {id:3, name:'Álgebra'},
-    ],
     required: true
   },
   {
