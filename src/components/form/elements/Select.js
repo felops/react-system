@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FormGroup, Label, Input } from 'reactstrap'
+import { Input } from 'reactstrap'
 
 export default class Select extends Component {
   render() {

@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import ExamsTable from './../../components/professor/ExamsTable'
-import ExamProfessorCard from './../../components/ExamProfessorCard'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
 
 export default class HomeProfessor extends Component {
   render() {

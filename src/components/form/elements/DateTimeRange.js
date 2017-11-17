@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { FormGroup } from 'reactstrap'
 
 import RangeCalendar from 'rc-calendar/lib/RangeCalendar'
 import Picker from 'rc-calendar/lib/Picker'

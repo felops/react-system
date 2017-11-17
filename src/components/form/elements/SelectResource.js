@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { FormGroup, Label, Input } from 'reactstrap'
 import Select from './Select'
 import axios from 'axios'
 
