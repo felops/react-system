@@ -44,6 +44,6 @@ const inputs = [
 
 export default class QuestionCreate extends Component {
   render() {
-    return <CreateForm inputs={inputs} resource="professor" title="Questão"/>
+    return <CreateForm inputs={inputs} resource="question" title="Questão"/>
   }
 }
