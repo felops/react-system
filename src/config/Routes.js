@@ -3,12 +3,13 @@ import Content from './../components/layout/Content'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { Container, Collapse, Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap'
 
-import Exam from './../components/Exam'
-import ExamCreate from './../screens/professor/create/ExamCreate'
-import ExameAvalytics from './../screens/professor/ExameAvalytics'
-import HomeProfessor from './../screens/professor/HomeProfessor'
+import ClassCreate from './../screens/professor/create/ClassCreate'
 import DisciplineCreate from './../screens/professor/create/DisciplineCreate'
 import DisciplineFieldCreate from './../screens/professor/create/DisciplineFieldCreate'
+import Exam from './../components/Exam'
+import ExamCreate from './../screens/professor/create/ExamCreate'
+import ExamResults from './../screens/professor/ExamResults'
+import HomeProfessor from './../screens/professor/HomeProfessor'
 import QuestionCreate from './../screens/professor/create/QuestionCreate'
 import ProfessorCreate from './../screens/professor/create/ProfessorCreate'
 
@@ -36,19 +37,22 @@ const professor = ({
       <NavItem>
         <Link className="nav-link" to="/professor">Professor</Link>
       </NavItem>
-
+      <NavItem>
+        <Link className="nav-link" to="/turma">Turma</Link>
+      </NavItem>
     </Nav>
   ),
   routes: (
     <Content>
       <Route exact path="/" component={HomeProfessor} />
-      <Route exact path="/disciplina" component={DisciplineCreate} />
+      <Route exact path="/avaliacao" component={ExamCreate} />
       <Route exact path="/categoria" component={DisciplineFieldCreate} />
+      <Route exact path="/disciplina" component={DisciplineCreate} />
       <Route exact path="/questao" component={QuestionCreate} />
       <Route exact path="/professor" component={ProfessorCreate} />
-      <Route exact path="/avaliacao" component={ExamCreate} />
-      <Route exact path="/estatiscas/:id" component={ExameAvalytics} />
+      <Route exact path="/turma" component={ClassCreate} />
       <Route path="/avaliacao/:id/detalhar" component={Exam} />
+      <Route path="/avaliacao/:id/resultados" component={ExamResults} />
     </Content>
   ),
 })
