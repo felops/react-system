@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Exam from './../../components/Exam'
 
-export default class CreateExam extends Component {
+export default class ExamAnalytics extends Component {
   render() {
     return (
       <div>
