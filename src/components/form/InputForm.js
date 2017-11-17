@@ -22,7 +22,7 @@ export default class InputGroup extends Component {
       case 'radio':
         element = <Radio {...props} />
         break
-      case 'rangedatetime':
+      case 'dateTimeRange':
         element = <DateTimeRange onChange={props.onChange}/>
         break
       default:

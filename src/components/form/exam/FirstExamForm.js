@@ -48,7 +48,7 @@ const inputs = [
     required: true
   },
   {
-    type: 'rangedatetime',
+    type: 'dateTimeRange',
     name: 'range',
     id: 'range',
     label: 'Período',
