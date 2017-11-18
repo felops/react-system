@@ -20,6 +20,7 @@ export default class ExamsTable extends Component {
           <td>{ date[1].from(date[0], true) }</td>
           <td>{ exam.Class.name }</td>
           <td>{ exam.Discipline.name }</td>
+          <td><Link to={'/avaliacao/' + exam.id + '/resultados'}>Visualizar</Link></td>
         </tr>
       )}
     )
@@ -45,6 +46,7 @@ export default class ExamsTable extends Component {
             <th>Prazo</th>
             <th>Classe</th>
             <th>Disciplina</th>
+            <th>Resultados</th>
           </tr>
         </thead>
         <tbody>
