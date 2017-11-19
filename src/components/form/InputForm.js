@@ -5,6 +5,7 @@ import Input from './elements/Input'
 import Radio from './elements/Radio'
 import Select from './elements/Select'
 import SelectResource from './elements/SelectResource'
+import SelectDisciplineField from './elements/SelectDisciplineField'
 
 export default class InputGroup extends Component {
   render() {
@@ -19,6 +20,9 @@ export default class InputGroup extends Component {
     switch(props.type) {
       case 'selectResource':
         element = <SelectResource {...props}/>
+        break
+      case 'selectDisciplineField':
+        element = <SelectDisciplineField {...props}/>
         break
       case 'select':
         element = <Select {...props}/>
