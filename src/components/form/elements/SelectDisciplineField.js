@@ -11,14 +11,6 @@ const discipline = {
   required: true
 }
 
-const disciplineField = {
-  type: 'selectResource',
-  name: 'disciplineField',
-  id: 'disciplineField',
-  label: 'Categoria',
-  required: true
-}
-
 const defaultSelect =
   <Input type='select' name='disciplineField' id='disciplineField' required={true} defaultValue={0}>
     <option key="0" value="0">SELECIONE A DISCIPLINA</option>
