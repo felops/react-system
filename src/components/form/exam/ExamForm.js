@@ -58,6 +58,7 @@ export default class ExamForm extends Component {
       let data = _.omit(state, ['buttonDisabled'])
       axios.post('/api/exam/' + this.state.exam + '/question', data).then((response) => {
         if(response.data.data) {
+          this.setState({ error: null })
           this.moveToNextStep()
         } else {
           this.setState({ error: response.data.msg })
