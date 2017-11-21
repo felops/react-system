@@ -22,9 +22,9 @@ const inputs = [
     id: 'level',
     label: 'Dificuldade',
     options: [
-      {id:1, name:'A'},
-      {id:2, name:'B'},
-      {id:3, name:'C'},
+      {id:1, name:'1'},
+      {id:2, name:'2'},
+      {id:3, name:'3'},
     ],
     required: true
   },
