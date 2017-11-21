@@ -9,7 +9,7 @@ export default class Select extends Component {
     )
 
     return (
-      <Input type='select' name={props.name} id={props.id} onChange={props.onChange} required={props.required} defaultValue={props.value}>
+      <Input type='select' name={props.name} id={props.id} onChange={props.onChange} required={props.required} defaultValue={props.defaultValue} value={props.value} disabled={props.disabled}>
         <option key="0" value="0">SELECIONE</option>
         {options}
       </Input>
