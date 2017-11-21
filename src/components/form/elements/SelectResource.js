@@ -3,30 +3,32 @@ import Select from './Select'
 import axios from 'axios'
 
 export default class SelectResource extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      value: -1,
-      options: [{id: -1, name: 'carregando..'}]
-    }
-  }
-
   componentWillMount() {
     const props = this.props
 
+    this.setState({
+      defaultValue: -1,
+      options: [{id: -1, name: 'carregando..'}]
+    })
+
     axios.get('/api/' + props.name).then((response) => {
       this.setState({
-        options: response.data,
-        value: 0
+        defaultValue: 0,
+        options: response.data
       })
     })
   }
 
   render() {
-    const props = {
+    let props = {
       ...this.props,
-      value: this.state.value,
       options: this.state.options
+    }
+
+    if(props.value) {
+      props.value = props.value
+    } else {
+      props.defaultValue = this.state.defaultValue
     }
 
     return (
