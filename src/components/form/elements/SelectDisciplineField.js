@@ -4,7 +4,7 @@ import Select from './Select'
 import SelectResource from './SelectResource'
 import axios from 'axios'
 
-const discipline = {
+let disciplineInput = {
   type: 'selectResource',
   name: 'discipline',
   id: 'discipline',
@@ -17,18 +17,25 @@ const defaultSelect =
   </Input>
 
 export default class SelectDisciplineField extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      value: -1,
-      options: [{id: -1, name: 'carregando..'}],
-      select: defaultSelect
+  componentWillMount() {
+    let discipline = this.props.discipline
+
+    if(discipline) {
+      disciplineInput.value = discipline
+      disciplineInput.disabled = true
     }
+
+    this.setState({
+      defaultValue: -1,
+      discipline: discipline,
+      options: [{id: -1, name: 'carregando..'}],
+      select: discipline ? this.getDisciplineField(discipline) : defaultSelect
+    })
   }
 
   getDisciplineField(value) {
     this.setState({
-      value: -1,
+      defaultValue: -1,
       options: [{id: -1, name: 'carregando..'}]
     })
 
@@ -58,7 +65,7 @@ export default class SelectDisciplineField extends Component {
     return (
       <Row>
         <Col>
-          <SelectResource {...discipline} onChange={this.onChange.bind(this)} />
+          <SelectResource {...disciplineInput} onChange={this.onChange.bind(this)} />
         </Col>
         <Col>
           {this.state.select}
