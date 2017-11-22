@@ -18,6 +18,8 @@ export default class ExamResults extends Component {
         return answer
       })
 
+      let average = timeAnswers > 0 ? moment(timeAnswers / totalAnswers).format('mm:ss') : '-'
+
       return (
         <tr key={i}>
           <td>{ question.Question.id }</td>
@@ -25,7 +27,7 @@ export default class ExamResults extends Component {
           <td>{ question.Question.level }</td>
           <td>{ totalAnswers }</td>
           <td>{ correctAnswers }</td>
-          <td>{ moment(timeAnswers / totalAnswers).format('mm:ss') }</td>
+          <td>{ average }</td>
         </tr>
       )
     })
