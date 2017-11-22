@@ -13,6 +13,6 @@ const inputs = [
 
 export default class ClassCreate extends Component {
   render() {
-    return <CreateForm inputs={inputs} resource="class" title="Turma"/>
+    return <CreateForm inputs={inputs} resource="class" title="Classe"/>
   }
 }
