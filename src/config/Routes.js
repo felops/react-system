@@ -38,7 +38,7 @@ const professor = ({
         <Link className="nav-link" to="/professor">Professor</Link>
       </NavItem>
       <NavItem>
-        <Link className="nav-link" to="/turma">Turma</Link>
+        <Link className="nav-link" to="/classe">Classe</Link>
       </NavItem>
     </Nav>
   ),
@@ -50,7 +50,7 @@ const professor = ({
       <Route exact path="/disciplina" component={DisciplineCreate} />
       <Route exact path="/questao" component={QuestionCreate} />
       <Route exact path="/professor" component={ProfessorCreate} />
-      <Route exact path="/turma" component={ClassCreate} />
+      <Route exact path="/classe" component={ClassCreate} />
       <Route path="/avaliacao/:id/detalhar" component={Exam} />
       <Route path="/avaliacao/:id/resultados" component={ExamResults} />
     </Content>
