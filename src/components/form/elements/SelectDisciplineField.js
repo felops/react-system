@@ -3,6 +3,7 @@ import { Input, Col, Row } from 'reactstrap'
 import Select from './Select'
 import SelectResource from './SelectResource'
 import axios from 'axios'
+import _ from 'lodash/object'
 
 let disciplineInput = {
   type: 'selectResource',
@@ -23,6 +24,8 @@ export default class SelectDisciplineField extends Component {
     if(discipline) {
       disciplineInput.value = discipline
       disciplineInput.disabled = true
+    } else {
+      disciplineInput = _.omit(disciplineInput, ['value', 'disabled'])
     }
 
     this.setState({
