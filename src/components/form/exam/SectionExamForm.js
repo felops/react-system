@@ -46,7 +46,7 @@ const inputs = [
   }
 ]
 
-export default class FirstExamForm extends Component {
+export default class SectionExamForm extends Component {
   render() {
     return <Form inputs={inputs} button={this.props.button}/>
   }
