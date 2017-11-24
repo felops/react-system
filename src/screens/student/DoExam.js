@@ -15,8 +15,7 @@ export default class DoExam extends Component {
     this.state = {
       step: 0,
       error: '',
-      exam: 4,
-      student: 1,
+      student: 1350153,
       questions: null,
       responses: {},
       isStarting: true,
@@ -179,7 +178,8 @@ export default class DoExam extends Component {
               key={questions[step - 1].id}
               {...questions[step - 1]}
               title={'Questão ' + (step)}
-              handleChange={this.handleRadioChange.bind(this)} />
+              handleChange={this.handleRadioChange.bind(this)}
+              timeEnd={exam.dateEnd} />
           </div>
         )
       } else {
