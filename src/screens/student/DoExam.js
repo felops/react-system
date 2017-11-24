@@ -42,7 +42,7 @@ export default class DoExam extends Component {
 
       axios.post('/api' +
                   '/student/' + state.student +
-                  '/exam/' + state.exam +
+                  '/exam/' + state.exam.id +
                   '/question/' + state.currentQuestion,
       {
         questionOption: state.responses[state.currentQuestion],
@@ -109,7 +109,7 @@ export default class DoExam extends Component {
         let questions = _.shuffle(exam.ExamQuestions)
 
         this.setState({
-          exam: _.pick(exam, ['dateStart', 'dateEnd', 'title']),
+          exam: _.pick(exam, ['id', 'dateStart', 'dateEnd', 'title']),
           questions: this.formify(questions),
           currentQuestion: 0
         })
