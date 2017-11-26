@@ -24,6 +24,27 @@ export default class DoExam extends Component {
     }
   }
 
+  componentWillMount() {
+    let exam = this.props.match.params.id
+
+    if(exam) {
+      axios.get('/api/exam/' + exam + '/student/' + this.state.student).then((response) => {
+        let exam = response.data[0]
+        let questions = _.shuffle(exam.ExamQuestions)
+
+        this.setState({
+          exam: _.pick(exam, ['id', 'dateStart', 'dateEnd', 'title']),
+          questions: this.formify(questions),
+          currentQuestion: 0,
+          feedback: {
+            totalQuestions: questions.length,
+            timeFinished: moment().isAfter(exam.dateEnd)
+          }
+        })
+      })
+    }
+  }
+
   buttonClick(e) {
     const state = this.state
 
@@ -76,9 +97,15 @@ export default class DoExam extends Component {
   }
 
   formify(questions) {
-    let arrLength = questions.length
+    let feedback = this.state.feedback
+    let filteredQuestions = _.filter(questions, (o) => o.StudentAnswers.length === 0)
+    let arrLength = filteredQuestions.length
 
-    return questions.map((question, i) => {
+    this.setState({
+      totalAnsweredQuestions: questions.length - arrLength
+    })
+
+    return filteredQuestions.map((question, i) => {
       question.Question.QuestionOptions.map((option) => {
         option.type = 'radio'
         option.name = 'q' + question.id
@@ -99,23 +126,6 @@ export default class DoExam extends Component {
     })
   }
 
-  componentWillMount() {
-    let exam = this.props.match.params.id
-
-    if(exam) {
-      axios.get('/api/exam/' + exam).then((response) => {
-        let exam = response.data[0]
-        let questions = _.shuffle(exam.ExamQuestions)
-
-        this.setState({
-          exam: _.pick(exam, ['id', 'dateStart', 'dateEnd', 'title']),
-          questions: this.formify(questions),
-          currentQuestion: 0
-        })
-      })
-    }
-  }
-
   renderError() {
     if (this.state.error) {
       return <div className="alert alert-danger" role="alert">{this.state.error}</div>
@@ -130,7 +140,8 @@ export default class DoExam extends Component {
             isStarting = state.isStarting,
             isFinished = state.isFinished,
             questions = state.questions,
-            step = state.step
+            step = state.step,
+            feedback = state.feedback
 
       if(isFinished) {
         return (
@@ -142,6 +153,29 @@ export default class DoExam extends Component {
           </Card>
         )
       } else if(questions) {
+        if(feedback.totalQuestions === 0) {
+          return (
+            <div>
+              <h5>{ exam.title }</h5>
+              <p>Tem um erro neste exame: não existem questões cadastradas para ele.</p>
+            </div>
+          )
+        } else if (feedback.timeFinished) {
+          return (
+            <div>
+              <h5>{ exam.title }</h5>
+              <p>Ops, parece que o tempo para finalizar a avaliação já expirou.</p>
+            </div>
+          )
+        } else if (feedback.totalQuestions === state.totalAnsweredQuestions) {
+         return (
+           <div>
+             <h5>{ exam.title }</h5>
+             <p>Ops, parece que você já respondeu à todas questões.</p>
+           </div>
+         )
+       }
+
         let steps = questions.map((question, i) => <Step key={i}/>)
         steps.push(<Step key={questions.length + 1}/>)
 
@@ -154,9 +188,9 @@ export default class DoExam extends Component {
               <Card className="card-margin">
                 <CardBlock>
                   <h5>{exam.title}</h5>
-                  <div>Você está pronto para responder às {questions.length} questões?</div>
+                  <p>Você está pronto para responder às {questions.length} questões?</p>
                   <div>
-                    As questões são salvas assim que você prossegue para a próxima. A submição das questões termina em {moment(exam.dateEnd).format('DD/MM/YYYY')} às {moment(exam.dateEnd).format('HH:mm')}.
+                    As questões são salvas assim que você prossegue para a próxima e caso você já respondeu alguma questão anteriormente, ela não aparecerá novamente nesta avaliação. A submição das questões termina em {moment(exam.dateEnd).format('DD/MM/YYYY')} às {moment(exam.dateEnd).format('HH:mm')}.
                   </div>
                   <p><small className="text-muted">Boa sorte ;)</small></p>
                   <Button color="primary" onClick={this.buttonClick.bind(this)} className="cursor-pointer">
