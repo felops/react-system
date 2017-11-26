@@ -5,6 +5,10 @@ import 'moment/locale/pt-br'
 
 export default class ExamResults extends Component {
   tablefy(data) {
+    if(data.ExamQuestions.length === 0) {
+      return <p>Essa avaliação não tem nenhuma questão cadastrada.</p>
+    }
+
     let questions = data.ExamQuestions.map((question, i) => {
       let timeAnswers = 0
       let totalAnswers = question.StudentAnswers.length
