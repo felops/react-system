@@ -5,8 +5,8 @@ import ExamQuestionCard from './ExamQuestionCard'
 
 export default class Exam extends Component {
   createQuestionComponents(questions) {
-    if(!questions) {
-      return null
+    if(questions.length === 0) {
+      return <p>Essa avaliação não tem nenhuma questão cadastrada.</p>
     }
 
     return questions.map((question, i) => {
