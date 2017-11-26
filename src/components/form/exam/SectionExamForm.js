@@ -10,7 +10,7 @@ const inputs = [
     required: true
   },
   {
-    type: 'selectResource',
+    type: 'selectDisciplineField',
     name: 'disciplineField',
     id: 'disciplineField',
     label: 'Categoria',
