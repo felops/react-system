@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import moment from 'moment'
 import 'moment/locale/pt-br'
@@ -23,6 +24,10 @@ export default class ExamResults extends Component {
       })
 
       let average = timeAnswers > 0 ? moment(timeAnswers / totalAnswers).format('mm:ss') : '-'
+
+      if(totalAnswers > 0 ) {
+        totalAnswers = <Link to={'/avaliacao/' + this.props.match.params.id + '/questao/' + question.Question.id}>{ totalAnswers }</Link>
+      }
 
       return (
         <tr key={i}>

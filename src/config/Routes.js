@@ -9,6 +9,7 @@ import DisciplineFieldCreate from './../screens/professor/create/DisciplineField
 import Exam from './../components/Exam'
 import ExamCreate from './../screens/professor/create/ExamCreate'
 import ExamResults from './../screens/professor/ExamResults'
+import ExamResultsDetails from './../screens/professor/ExamResultsDetails'
 import HomeProfessor from './../screens/professor/HomeProfessor'
 import QuestionCreate from './../screens/professor/create/QuestionCreate'
 import ProfessorCreate from './../screens/professor/create/ProfessorCreate'
@@ -53,6 +54,7 @@ const professor = ({
       <Route exact path="/classe" component={ClassCreate} />
       <Route path="/avaliacao/:id/detalhar" component={Exam} />
       <Route path="/avaliacao/:id/resultados" component={ExamResults} />
+      <Route path="/avaliacao/:avaliacao/questao/:questao" component={ExamResultsDetails} />
     </Content>
   ),
 })
