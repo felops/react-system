@@ -47,7 +47,7 @@ let inputs = [
 ]
 
 export default class SectionExamForm extends Component {
-  componentWillMount() {
+  render() {
     let discipline = this.props.discipline
 
     if(discipline) {
@@ -56,9 +56,7 @@ export default class SectionExamForm extends Component {
         discipline: discipline
       }
     }
-  }
 
-  render() {
     return <Form inputs={inputs} button={this.props.button}/>
   }
 }

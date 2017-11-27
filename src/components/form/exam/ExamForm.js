@@ -15,8 +15,7 @@ export default class ExamForm extends Component {
       currentStep: 0,
       isFinished: false,
       steps: [
-        { title: 'Início' },
-        { title: 'Seção 1' }
+        { title: 'Início' }
       ]
     }
   }
@@ -43,11 +42,11 @@ export default class ExamForm extends Component {
       }
 
       axios.post('/api/exam', data).then((response) => {
-        let shouldAddSteps = state.sections > 1
+        let shouldAddSteps = state.sections > 0
         let steps = this.state.steps
 
         if(shouldAddSteps) {
-          for(let i = 2; i <= state.sections; i++) {
+          for(let i = 1; i <= state.sections; i++) {
             steps.push({ title: 'Seção ' + i })
           }
         }
