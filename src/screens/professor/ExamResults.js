@@ -26,12 +26,12 @@ export default class ExamResults extends Component {
       let average = timeAnswers > 0 ? moment(timeAnswers / totalAnswers).format('mm:ss') : '-'
 
       if(totalAnswers > 0 ) {
-        totalAnswers = <Link to={'/avaliacao/' + this.props.match.params.id + '/questao/' + question.Question.id}>{ totalAnswers }</Link>
+        totalAnswers = <Link to={'/avaliacao/' + this.props.match.params.id + '/questao/' + question.id}>{ totalAnswers }</Link>
       }
 
       return (
         <tr key={i}>
-          <td>{ question.Question.id }</td>
+          <td>{ question.id }</td>
           <td>{ question.Question.disciplineField }</td>
           <td>{ question.Question.level }</td>
           <td>{ totalAnswers }</td>
