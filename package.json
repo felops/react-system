@@ -6,16 +6,16 @@
     "axios": "^0.16.2",
     "bootstrap": "4.0.0-alpha.6",
     "lodash": "^4.17.4",
-    "rc-calendar": "^9.2.0",
-    "rc-steps": "^3.0.0",
-    "rc-time-picker": "^3.2.0",
-    "react": "^15.3.0",
-    "react-dom": "^15.3.0",
+    "rc-calendar": "^9.3.0",
+    "rc-steps": "^3.0.1",
+    "rc-time-picker": "^3.2.1",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14",
     "react-transition-group": "^1.1.2",
     "reactstrap": "4.8.0",
-    "validator": "^9.1.1"
+    "validator": "^9.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
