@@ -11,7 +11,7 @@ export default class HomeProfessor extends Component {
         </div>
         <h3>Avaliações</h3>
         <section>
-          <ExamsTable professor={1}/>
+          <ExamsTable professor={localStorage.getItem('USER_ARANDU')}/>
         </section>
       </div>
     )

@@ -6,7 +6,7 @@ const inputs = [
     type: 'hidden',
     name: 'professor',
     id: 'professor',
-    value: 1
+    value: localStorage.getItem('USER_ARANDU')
   },
   {
     type: 'text',

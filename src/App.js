@@ -16,6 +16,16 @@ export default class App extends Component {
   doLogin(e, state) {
     axios.post('/api/login/' + state.userType, state).then((response) => {
       let data = response.data
+
+      if(data.data) {
+        let user = data.data[0] ? data.data[0] : data.data
+        localStorage.setItem('USER_ARANDU', user.id)
+
+        if(state.userType === 'student') {
+          localStorage.setItem('USER_CLASS_ARANDU', user.class)
+        }
+      }
+
       this.setState({
         isProfessor: state.userType === 'professor',
         isLoggedIn: data.data ? true : false,

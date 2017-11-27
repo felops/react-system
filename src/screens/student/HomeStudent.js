@@ -7,10 +7,10 @@ export default class HomeStudent extends Component {
     return (
       <div>
         <h3>Avaliações em andamento</h3>
-        <AvailableExamsTable studentClass={1}/>
+        <AvailableExamsTable studentClass={localStorage.getItem('USER_CLASS_ARANDU')}/>
         <section>
           <h3>Todas Avaliações</h3>
-          <ExamsTable studentClass={1}/>
+          <ExamsTable studentClass={localStorage.getItem('USER_CLASS_ARANDU')}/>
         </section>
       </div>
     )

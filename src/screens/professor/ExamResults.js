@@ -63,7 +63,7 @@ export default class ExamResults extends Component {
   componentWillMount() {
     this.setState({ table: 'carregando..' })
     let exam = this.props.match.params.id
-    axios.get('/api/professor/' + 1 + '/exam/' + exam + '/resultados')
+    axios.get('/api/professor/' + localStorage.getItem('USER_ARANDU') + '/exam/' + exam + '/resultados')
     .then((response) => {
       this.setState({
         table: this.tablefy(response.data[0])

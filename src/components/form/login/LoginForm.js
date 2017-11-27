@@ -21,7 +21,7 @@ export default class LoginForm extends Component {
     const state = this.state
 
     if(state.userType) {
-      if(state.userType === 'Professor') {
+      if(state.userType === 'professor') {
         return <LoginFormProfessor button={this.props.button}/>
       }
 
@@ -31,7 +31,7 @@ export default class LoginForm extends Component {
     return (
       <div>
         <CardDeck>
-          <Card className="text-center cursor-pointer card-shadow" onClick={() => this.onClick('Professor')}>
+          <Card className="text-center cursor-pointer card-shadow" onClick={() => this.onClick('professor')}>
             <div className="text-center">
               <CardImg top width="50%" src="/images/teacher-desk.png" alt="Professor" />
             </div>
@@ -39,7 +39,7 @@ export default class LoginForm extends Component {
               <Button color="primary" outline className="cursor-pointer">Acessar como Professor</Button>
             </CardBlock>
           </Card>
-          <Card className="text-center cursor-pointer card-shadow" onClick={() => this.onClick('Aluno')}>
+          <Card className="text-center cursor-pointer card-shadow" onClick={() => this.onClick('student')}>
             <div className="text-center">
               <CardImg top width="50%" src="/images/agenda.png" alt="Aluno" />
             </div>

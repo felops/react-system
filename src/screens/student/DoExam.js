@@ -15,7 +15,7 @@ export default class DoExam extends Component {
     this.state = {
       step: 0,
       error: '',
-      student: 1350153,
+      student: localStorage.getItem('USER_ARANDU'),
       questions: null,
       responses: {},
       isStarting: true,
