@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Form from './../Form'
 
-const inputs = [
+let inputs = [
   {
     type: 'number',
     name: 'questions',
@@ -47,6 +47,17 @@ const inputs = [
 ]
 
 export default class SectionExamForm extends Component {
+  componentWillMount() {
+    let discipline = this.props.discipline
+
+    if(discipline) {
+      inputs[1] = {
+        ...inputs[1],
+        discipline: discipline
+      }
+    }
+  }
+
   render() {
     return <Form inputs={inputs} button={this.props.button}/>
   }

@@ -33,14 +33,6 @@ export default class ExamForm extends Component {
   }
 
   onClick(e, state) {
-    if(state.sections > 1) {
-      let steps = this.state.steps
-      for(let i = 2; i <= state.sections; i++) {
-        steps.push({ title: 'Seção ' + i })
-      }
-      this.setState(steps)
-    }
-
     if(this.state.currentStep === 0) {
       let data = _.omit(state, ['buttonDisabled', 'range', 'sections'])
 
@@ -51,7 +43,20 @@ export default class ExamForm extends Component {
       }
 
       axios.post('/api/exam', data).then((response) => {
-        this.setState({exam: response.data.data.id})
+        let shouldAddSteps = state.sections > 1
+        let steps = this.state.steps
+
+        if(shouldAddSteps) {
+          for(let i = 2; i <= state.sections; i++) {
+            steps.push({ title: 'Seção ' + i })
+          }
+        }
+
+        this.setState({
+          exam: response.data.data.id,
+          discipline: data.discipline,
+          steps: steps
+        })
         this.moveToNextStep()
       })
     } else {
@@ -104,7 +109,7 @@ export default class ExamForm extends Component {
               return <div className={className} key={i}><FirstExamForm button={button}/></div>
             }
 
-            return <div className={className} key={i}><SectionExamForm button={button}/></div>
+            return <div className={className} key={i}><SectionExamForm button={button} discipline={this.state.discipline}/></div>
           })
         }
       </div>
