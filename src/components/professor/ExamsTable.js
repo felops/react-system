@@ -27,32 +27,40 @@ export default class ExamsTable extends Component {
   }
 
   componentWillMount() {
-    this.setState({exams: 'carregando..'})
+    this.setState({
+      exams: 'carregando..',
+      results: 0,
+    })
 
     axios.get('/api/professor/' + this.props.professor + '/exam').then((response) => {
       this.setState({
-         exams: this.createTableRow(response.data)
+        results: response.data.length,
+        exams: this.createTableRow(response.data)
       })
     })
   }
 
   render() {
-    return (
-      <table className='table table-sm'>
-        <thead>
-          <tr>
-            <th>Título</th>
-            <th>Início</th>
-            <th>Prazo</th>
-            <th>Classe</th>
-            <th>Disciplina</th>
-            <th>Resultados</th>
-          </tr>
-        </thead>
-        <tbody>
-          { this.state.exams }
-        </tbody>
-      </table>
-    )
+    if(this.state.results > 0) {
+      return (
+        <table className='table table-sm'>
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Início</th>
+              <th>Prazo</th>
+              <th>Classe</th>
+              <th>Disciplina</th>
+              <th>Resultados</th>
+            </tr>
+          </thead>
+          <tbody>
+            { this.state.exams }
+          </tbody>
+        </table>
+      )
+    } else {
+      return <p>Não existe nenhum exame disponível.</p>
+    }
   }
 }

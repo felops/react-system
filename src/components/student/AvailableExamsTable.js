@@ -36,7 +36,7 @@ export default class AvailableExamsTable extends Component {
   }
 
   render() {
-    if(this.state.results > 0)
+    if(this.state.results > 0) {
       return (
         <table className='table table-sm'>
           <thead>
@@ -51,7 +51,7 @@ export default class AvailableExamsTable extends Component {
           </tbody>
         </table>
       )
-    else {
+    } else {
       return <p>Não existe nenhum exame disponível.</p>
     }
   }
