@@ -48,36 +48,49 @@ export default class DoExam extends Component {
   buttonClick(e) {
     const state = this.state
 
-    if(state.isStarting || state.responses[state.currentQuestion]) {
+    if(state.isStarting || state.responses[state.currentQuestion.id]) {
       let nextStep = state.step + 1
       let nextQuestion
       if(nextStep === 1) {
-        nextQuestion = state.questions[state.step].id
+        nextQuestion = state.questions[state.step]
       } else {
-        nextQuestion = state.questions[state.step - 1].id
+        nextQuestion = state.questions[state.step - 1]
         if(state.questions.length >= nextStep) {
-          nextQuestion = state.questions[nextStep - 1].id
+          nextQuestion = state.questions[nextStep - 1]
         }
       }
 
-      axios.post('/api' +
-                  '/student/' + state.student +
-                  '/exam/' + state.exam.id +
-                  '/question/' + state.currentQuestion,
-      {
-        questionOption: state.responses[state.currentQuestion],
-        nextQuestion: nextQuestion,
-      }).then((response) => {
-        if(nextStep < state.questions.length + 1) {
-          this.setState({
-            isStarting: false,
-            currentQuestion: nextQuestion,
-            step: nextStep
-          })
-        } else {
-          this.setState({ isFinished: true })
-        }
-      })
+      if(state.isStarting) {
+        this.setState({
+          isStarting: false,
+          currentQuestion: {
+            ...nextQuestion,
+            dateStart: moment().toDate()
+          },
+          step: nextStep
+        })
+      } else {
+        axios.post('/api' +
+                    '/student/' + state.student +
+                    '/exam/' + state.exam.id +
+                    '/question/' + state.currentQuestion.id,
+        {
+          questionOption: state.responses[state.currentQuestion.id],
+          dateStart: state.currentQuestion.dateStart
+        }).then((response) => {
+          if(nextStep < state.questions.length + 1) {
+            this.setState({
+              currentQuestion: {
+                ...nextQuestion,
+                dateStart: moment().toDate()
+              },
+              step: nextStep
+            })
+          } else {
+            this.setState({ isFinished: true })
+          }
+        })
+      }
     } else {
       this.setState({ error: 'Selecione uma resposta antes de prosseguir.' })
     }
@@ -91,8 +104,7 @@ export default class DoExam extends Component {
       responses: {
         ...this.state.responses,
         [question]: e.target.value
-      },
-      currentQuestion: parseInt(question, 10),
+      }
     })
   }
 
