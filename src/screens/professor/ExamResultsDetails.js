@@ -69,7 +69,7 @@ export default class ExamResultsdetails extends Component {
     return (
       <div>
         <h3>Detalhes</h3>
-        <p>{ this.state.table }</p>
+        <div>{ this.state.table }</div>
       </div>
     )
   }

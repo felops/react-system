@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import moment from 'moment'
 import 'moment/locale/pt-br'
@@ -17,6 +18,7 @@ export default class ExamsTable extends Component {
           <td>{ exam.title }</td>
           <td>{ start }</td>
           <td>{ date[1].from(date[0], true) }</td>
+          <td><Link to={'/avaliacao/' + exam.id + '/resultado'}>Visualizar</Link></td>
         </tr>
       )}
     )
@@ -45,6 +47,7 @@ export default class ExamsTable extends Component {
               <th>Título</th>
               <th>Início</th>
               <th>Prazo</th>
+              <th>Resultados</th>
             </tr>
           </thead>
           <tbody>

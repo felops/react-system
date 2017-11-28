@@ -23,6 +23,7 @@ import ExamResultsDetails from './../screens/professor/ExamResultsDetails'
 import HomeProfessor from './../screens/professor/HomeProfessor'
 import HomeStudent from './../screens/student/HomeStudent'
 import DoExam from './../screens/student/DoExam'
+import ExamPerformance from './../screens/student/ExamPerformance'
 
 const professor = ({
   links: (
@@ -83,7 +84,8 @@ const student = ({
   routes: (
     <Content>
       <Route exact path="/" component={HomeStudent} />
-      <Route path="/avaliacao/:id" component={DoExam} />
+      <Route exact path="/avaliacao/:id" component={DoExam} />
+      <Route exact path="/avaliacao/:id/resultado" component={ExamPerformance} />
     </Content>
   ),
 })
