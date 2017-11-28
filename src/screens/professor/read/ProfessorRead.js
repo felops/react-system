@@ -1,13 +1,18 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Alert } from 'reactstrap'
-import { Link } from 'react-router-dom'
 import ReadTemplate from './../../../components/ReadTemplate'
+import ModalUpdate from './../../../components/form/ModalUpdate'
 
 export default class ProfessorRead extends Component {
   constructor(props) {
     super(props)
-    this.state = { data: 'carregando..' }
+    this.state = {
+      data: 'carregando..',
+      showModal: false
+    }
+
+    this.toggleModal = this.toggleModal.bind(this)
   }
 
   delete(item) {
@@ -27,6 +32,44 @@ export default class ProfessorRead extends Component {
     })
   }
 
+  toggleModal() {
+    this.setState({
+      showModal: !this.state.showModal
+    })
+  }
+
+  edit(item) {
+    let inputs = [
+      {
+        type: 'hidden',
+        name: 'id',
+        id: 'id',
+        defaultValue: item.id
+      },
+      {
+        type: 'text',
+        name: 'name',
+        id: 'name',
+        label: 'Nome',
+        required: true,
+        defaultValue: item.name
+      },
+      {
+        type: 'email',
+        name: 'email',
+        id: 'email',
+        label: 'Email',
+        required: true,
+        defaultValue: item.email
+      }
+    ]
+
+    this.setState({
+      showModal: true,
+      inputs: inputs
+    })
+  }
+
   tablefy(data) {
     if(data.length === 0) {
       return <p>Não existe nenhum professor disponível.</p>
@@ -38,7 +81,7 @@ export default class ProfessorRead extends Component {
           <td>{ item.id }</td>
           <td>{ item.name }</td>
           <td>{ item.email }</td>
-          <td><Link to={'/api/professor/' + item.id}>Alterar</Link></td>
+          <td><a href="#" onClick={() => this.edit(item)}>Alterar</a></td>
           <td><a href="#" onClick={() => this.delete(item.id)}>Excluir</a></td>
         </tr>
       )
@@ -79,6 +122,7 @@ export default class ProfessorRead extends Component {
       <ReadTemplate data={this.state.data} title="Professor">
         { this.state.msg }
         { this.state.data }
+        <ModalUpdate inputs={this.state.inputs} showModal={this.state.showModal} toggleModal={this.toggleModal} resource="professor" title="Professor" fetchData={this.fetchData.bind(this)}/>
       </ReadTemplate>
     )
   }

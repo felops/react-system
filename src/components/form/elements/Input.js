@@ -6,7 +6,7 @@ export default class Input extends Component {
     const props = this.props
 
     return (
-      <InputText type={props.type} name={props.name} id={props.id} value={props.value} onChange={props.onChange} required={props.required}/>
+      <InputText type={props.type} name={props.name} id={props.id} value={props.value} onChange={props.onChange} required={props.required} defaultValue={props.defaultValue}/>
     )
   }
 }

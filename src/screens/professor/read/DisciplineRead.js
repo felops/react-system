@@ -1,13 +1,18 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Alert } from 'reactstrap'
-import { Link } from 'react-router-dom'
 import ReadTemplate from './../../../components/ReadTemplate'
+import ModalUpdate from './../../../components/form/ModalUpdate'
 
 export default class DisciplineRead extends Component {
   constructor(props) {
     super(props)
-    this.state = { data: 'carregando..' }
+    this.state = {
+      data: 'carregando..',
+      showModal: false
+    }
+
+    this.toggleModal = this.toggleModal.bind(this)
   }
 
   delete(item) {
@@ -27,6 +32,36 @@ export default class DisciplineRead extends Component {
     })
   }
 
+  toggleModal() {
+    this.setState({
+      showModal: !this.state.showModal
+    })
+  }
+
+  edit(item) {
+    let inputs = [
+      {
+        type: 'hidden',
+        name: 'id',
+        id: 'id',
+        defaultValue: item.id
+      },
+      {
+        type: 'text',
+        name: 'name',
+        id: 'name',
+        label: 'Disciplina',
+        required: true,
+        defaultValue: item.name
+      }
+    ]
+
+    this.setState({
+      showModal: true,
+      inputs: inputs
+    })
+  }
+
   tablefy(data) {
     if(data.length === 0) {
       return <p>Não existe nenhuma disciplina disponível.</p>
@@ -37,7 +72,7 @@ export default class DisciplineRead extends Component {
         <tr key={i}>
           <td>{ item.id }</td>
           <td>{ item.name }</td>
-          <td><Link to={'/api/discipline/' + item.id}>Alterar</Link></td>
+          <td><a href="#" onClick={() => this.edit(item)}>Alterar</a></td>
           <td><a href="#" onClick={() => this.delete(item.id)}>Excluir</a></td>
         </tr>
       )
@@ -77,6 +112,7 @@ export default class DisciplineRead extends Component {
       <ReadTemplate data={this.state.data} title="Disciplina">
         { this.state.msg }
         { this.state.data }
+        <ModalUpdate inputs={this.state.inputs} showModal={this.state.showModal} toggleModal={this.toggleModal} resource="discipline" title="Discplina" fetchData={this.fetchData.bind(this)}/>
       </ReadTemplate>
     )
   }

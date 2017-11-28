@@ -16,7 +16,7 @@ export default class Form extends Component {
 
     if(this.props.inputs) {
       this.props.inputs.map(function(input) {
-        return state[input.name] = input.value
+        return state[input.name] = input.value ? input.value : input.defaultValue
       })
     }
 

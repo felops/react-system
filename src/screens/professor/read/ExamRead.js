@@ -2,13 +2,18 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import moment from 'moment'
 import { Alert } from 'reactstrap'
-import { Link } from 'react-router-dom'
 import ReadTemplate from './../../../components/ReadTemplate'
+import ModalUpdate from './../../../components/form/ModalUpdate'
 
 export default class ExamRead extends Component {
   constructor(props) {
     super(props)
-    this.state = { data: 'carregando..' }
+    this.state = {
+      data: 'carregando..',
+      showModal: false
+    }
+
+    this.toggleModal = this.toggleModal.bind(this)
   }
 
   delete(item) {
@@ -28,6 +33,58 @@ export default class ExamRead extends Component {
     })
   }
 
+  toggleModal() {
+    this.setState({
+      showModal: !this.state.showModal
+    })
+  }
+
+  edit(item) {
+    let inputs = [
+      {
+        type: 'hidden',
+        name: 'id',
+        id: 'id',
+        defaultValue: item.id
+      },
+      {
+        type: 'hidden',
+        name: 'id',
+        id: 'id',
+        defaultValue: item.id
+      },
+      {
+        type: 'text',
+        name: 'title',
+        id: 'title',
+        label: 'Título',
+        required: true,
+        defaultValue: item.title
+      },
+      {
+        type: 'selectResource',
+        name: 'discipline',
+        id: 'discipline',
+        label: 'Disciplina',
+        required: true,
+        defaultValue: item.discipline
+      },
+      {
+        type: 'selectResource',
+        name: 'class',
+        id: 'class',
+        label: 'Classe',
+        required: true,
+        defaultValue: item.class
+      }
+    ]
+
+    this.setState({
+      showModal: true,
+      inputs: inputs
+    })
+  }
+
   tablefy(data) {
     if(data.length === 0) {
       return <p>Não existe nenhum exame disponível.</p>
@@ -43,7 +100,7 @@ export default class ExamRead extends Component {
           <td>{ item.Class.name }</td>
           <td>{ item.Discipline.name }</td>
           <td>{ item.Professor.name }</td>
-          <td><Link to={'/api/exam/' + item.id}>Alterar</Link></td>
+          <td><a href="#" onClick={() => this.edit(item)}>Alterar</a></td>
           <td><a href="#" onClick={() => this.delete(item.id)}>Excluir</a></td>
         </tr>
       )
@@ -88,6 +145,7 @@ export default class ExamRead extends Component {
       <ReadTemplate data={this.state.data} title="Avaliação">
         { this.state.msg }
         { this.state.data }
+        <ModalUpdate inputs={this.state.inputs} showModal={this.state.showModal} toggleModal={this.toggleModal} resource="exam" title="Avaliação" fetchData={this.fetchData.bind(this)}/>
       </ReadTemplate>
     )
   }
