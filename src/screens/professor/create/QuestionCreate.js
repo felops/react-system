@@ -10,6 +10,48 @@ const inputs = [
     required: true
   },
   {
+    type: 'textarea',
+    name: 'option1',
+    id: 'option1',
+    label: 'Opção 1',
+    required: true
+  },
+  {
+    type: 'textarea',
+    name: 'option2',
+    id: 'option2',
+    label: 'Opção 2',
+    required: true
+  },
+  {
+    type: 'textarea',
+    name: 'option3',
+    id: 'option3',
+    label: 'Opção 3',
+    required: true
+  },
+  {
+    type: 'textarea',
+    name: 'option4',
+    id: 'option4',
+    label: 'Opção 4',
+    required: true
+  },
+  ,
+  {
+    type: 'select',
+    name: 'rightOption',
+    id: 'rightOption',
+    label: 'Opção correta',
+    options: [
+      {id: 1, name: 'Opção 1'},
+      {id: 2, name: 'Opção 2'},
+      {id: 3, name: 'Opção 3'},
+      {id: 4, name: 'Opção 4'},
+    ],
+    required: true
+  },
+  {
     type: 'selectDisciplineField',
     name: 'disciplineField',
     id: 'disciplineField',
