@@ -18,7 +18,7 @@ const inputs = [
   }
 ]
 
-export default class DisciplineFieldExam extends Component {
+export default class DisciplineFieldCreate extends Component {
   render() {
     return <CreateForm inputs={inputs} resource="disciplineField" title="Categoria"/>
   }

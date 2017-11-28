@@ -5,7 +5,7 @@ import { Alert } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import ReadTemplate from './../../../components/ReadTemplate'
 
-export default class ClassRead extends Component {
+export default class ExamRead extends Component {
   constructor(props) {
     super(props)
     this.state = { data: 'carregando..' }
@@ -14,7 +14,7 @@ export default class ClassRead extends Component {
   delete(item) {
     axios.delete('/api/exam/' + item).then((response) => {
       let message
-      
+
       if(response.data.data) {
         this.fetchData()
         message = <Alert color="success">Excluído com sucesso!</Alert>

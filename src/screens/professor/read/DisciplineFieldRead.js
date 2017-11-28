@@ -4,7 +4,7 @@ import { Alert } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import ReadTemplate from './../../../components/ReadTemplate'
 
-export default class ClassRead extends Component {
+export default class DisciplineFieldRead extends Component {
   constructor(props) {
     super(props)
     this.state = { data: 'carregando..' }
