@@ -15,7 +15,7 @@ export default class ModalUpdate extends Component {
   onClick(e, state) {
     let data = _.omit(state, 'buttonDisabled')
     console.log(state)
-    axios.post('/api/' + this.props.resource + '/' + state.id, data).then((response) => {
+    axios.put('/api/' + this.props.resource + '/' + state.id, data).then((response) => {
       let data = response.data
 
       if(data) {
