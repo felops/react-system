@@ -37,7 +37,6 @@ const inputs = [
     label: 'Opção 4',
     required: true
   },
-  ,
   {
     type: 'select',
     name: 'rightOption',
@@ -47,7 +46,7 @@ const inputs = [
       {id: 1, name: 'Opção 1'},
       {id: 2, name: 'Opção 2'},
       {id: 3, name: 'Opção 3'},
-      {id: 4, name: 'Opção 4'},
+      {id: 4, name: 'Opção 4'}
     ],
     required: true
   },
@@ -66,7 +65,7 @@ const inputs = [
     options: [
       {id:1, name:'1'},
       {id:2, name:'2'},
-      {id:3, name:'3'},
+      {id:3, name:'3'}
     ]
   },
   {

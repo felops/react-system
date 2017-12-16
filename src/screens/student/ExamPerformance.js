@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import axios from 'axios'
-import moment from 'moment'
-import 'moment/locale/pt-br'
 
 export default class ExamPerformance extends Component {
   tablefy(data) {

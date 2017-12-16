@@ -60,7 +60,7 @@ export default class SelectDisciplineField extends Component {
   onChange(e) {
     let value = e.target.value
     this.setState({
-      select: parseInt(value) === 0 ? defaultSelect : this.getDisciplineField(value)
+      select: parseInt(value, 10) === 0 ? defaultSelect : this.getDisciplineField(value)
     })
   }
 
