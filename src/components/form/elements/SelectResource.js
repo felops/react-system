@@ -13,7 +13,6 @@ export default class SelectResource extends Component {
 
     axios.get('/api/' + props.name).then((response) => {
       this.setState({
-        defaultValue: 0,
         options: response.data
       })
     })
@@ -28,7 +27,7 @@ export default class SelectResource extends Component {
     if(props.value) {
       props.value = props.value
     } else {
-      props.defaultValue = this.state.defaultValue
+      props.defaultValue = props.defaultValue
     }
 
     return (
